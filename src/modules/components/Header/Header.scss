@@ -1,0 +1,19 @@
+.social {
+  &__header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    border: 1px solid #dce1e6;
+    height: 48px;
+    width: 100%;
+
+    &_logo {
+      display: block;
+      margin-top: 7px;
+      width: 15.99px;
+      height: 9.5px;
+    }
+  }
+}

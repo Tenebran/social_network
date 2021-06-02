@@ -1,0 +1,39 @@
+@import '../node_modules/normalize.css/normalize.css';
+
+// @font-face {
+//   font-family: 'Roboto Black';
+//   src: local('Open Sans Regular'), local('Open-Sans-Regular'),
+//     url('../font/OpenSans-Regular.woff') format('woff');
+//   font-weight: 400;
+//   font-style: normal;
+// }
+
+@font-face {
+  font-family: 'Roboto-Black';
+  src: local('Roboto Black'), url('./modules/fonts/Roboto-Black.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  background-color: #e5e5e5;
+}
+.content__conteiner {
+  max-width: 1180px;
+  padding: 0 10px;
+  margin: 0 auto;
+
+  &_menu {
+    display: flex;
+    padding-top: 72px;
+  }
+}
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
