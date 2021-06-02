@@ -16,8 +16,13 @@ export default function Profile() {
       <div className="profile__left">
         <div className="profile__person">
           <div className="profile__person_wrapp">
+<<<<<<< HEAD
             <span className="profile__person_name">Iruska test1</span>
             <span className="profile__person_surname">Stepanyuk test3</span>
+=======
+            <span className="profile__person_name">Iruska test8</span>
+            <span className="profile__person_surname">Stepanyuk 22</span>
+>>>>>>> TEST
           </div>
           <div className="profile__label">
             <span className="profile__label-name"> Birthday:</span>
