@@ -17,11 +17,16 @@ export default function Profile() {
         <div className="profile__person">
           <div className="profile__person_wrapp">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <span className="profile__person_name">Iruska test1</span>
             <span className="profile__person_surname">Stepanyuk test3</span>
 =======
             <span className="profile__person_name">Iruska test8</span>
             <span className="profile__person_surname">Stepanyuk</span>
+>>>>>>> TEST
+=======
+            <span className="profile__person_name">Iruska test1</span>
+            <span className="profile__person_surname">Stepanyuk test22</span>
 >>>>>>> TEST
           </div>
           <div className="profile__label">
