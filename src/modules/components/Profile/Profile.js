@@ -17,7 +17,7 @@ export default function Profile() {
         <div className="profile__person">
           <div className="profile__person_wrapp">
             <span className="profile__person_name">Iruska test1</span>
-            <span className="profile__person_surname">Stepanyuk</span>
+            <span className="profile__person_surname">Stepanyuk test3</span>
           </div>
           <div className="profile__label">
             <span className="profile__label-name"> Birthday:</span>
