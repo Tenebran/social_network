@@ -8,23 +8,37 @@
     }
 
     &_text {
+      display: block;
       font-style: normal;
       font-weight: normal;
       font-size: 13px;
       line-height: 15px;
       color: #515152;
+      padding: 8px 0 0px 0;
     }
 
     &_link {
+      display: flex;
+      padding: 5px;
+      height: 30px;
+      width: 163px;
+      border-radius: 5px;
       font-weight: 100;
       font-family: Roboto-Black;
       text-decoration: none;
+      padding: 0 10px 10px;
       margin: 0 0 10px 0;
+      transition: 0.2s;
+
+      &:hover {
+        background-color: #5181b80e;
+      }
     }
 
     &_svg {
       color: #5181b8;
-      margin: 0 12px 0 0;
+      margin: 5px 12px 0 0;
+      // padding: 2px 0 0 0;
     }
 
     &_wrapper {
