@@ -4,7 +4,7 @@ import Myposts from './MyPosts/Myposts';
 import ProfileAvatar from './ProfileAvatar/ProfileAvatar';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 
-export default function Profile() {
+export default function Profile({ profile }) {
   return (
     <div className="profile">
       <div className="profile__left">
@@ -13,7 +13,7 @@ export default function Profile() {
 
       <div className="profile__right">
         <ProfileInfo />
-        <Myposts />
+        <Myposts postData={profile.postData} />
       </div>
     </div>
   );

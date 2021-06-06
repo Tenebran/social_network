@@ -8,7 +8,7 @@ import News from './modules/components/News/News';
 import Music from './modules/components/Music/Music';
 import Settings from './modules/components/Settings/Settings';
 
-function App() {
+function App({ state }) {
   return (
     <Router>
       <div className="social__wrapper">
@@ -16,11 +16,11 @@ function App() {
         <div className="content__conteiner content__conteiner_menu">
           <Siderbar />
           <Switch>
-            <Route path="/profile" component={Profile}></Route>
-            <Route path="/dialogs" exact component={Dialogs}></Route>
-            <Route path="/news" component={News}></Route>
-            <Route path="/music" component={Music}></Route>
-            <Route path="/settings" component={Settings}></Route>
+            <Route path="/profile" component={() => <Profile profile={state.profile} />}></Route>
+            <Route path="/dialogs" component={() => <Dialogs dialogs={state.dialogs} />}></Route>
+            <Route path="/news" component={() => <News />}></Route>
+            <Route path="/music" component={() => <Music />}></Route>
+            <Route path="/settings" component={() => <Settings />}></Route>
           </Switch>
         </div>
       </div>
