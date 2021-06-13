@@ -1,7 +1,42 @@
+export type PostDataType = {
+  id?: number;
+  image: string;
+  like: number;
+  messages: string;
+};
+
+export type DialogsDataType = {
+  id: number;
+  name: string;
+  image: string;
+};
+
+type messagesData = {
+  id: number;
+  messages: string;
+  image: string;
+  userName: string;
+};
+
+export type ProfileType = {
+  postData: Array<PostDataType>;
+  key?: number;
+};
+
+export type DialogsType = {
+  dialogsData: Array<DialogsDataType>;
+  messagesData: Array<messagesData>;
+};
+
+export type RootStateType = {
+  profile: ProfileType;
+  dialogs: DialogsType;
+};
+
 let userImage =
   'https://sun1-87.userapi.com/s/v1/ig2/cgURU66rcM0MDXpDB-lP4i1uJ_x84k0fVZ9HDyr9MorW4wmHO5C9Ix8XZigcNNq-DgS2Em9rMGzz-klIwyeMjyY1.jpg?size=400x0&quality=96&crop=1,271,1615,1615&ava=1';
 
-let state = {
+let state: RootStateType = {
   profile: {
     postData: [
       {

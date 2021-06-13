@@ -3,8 +3,13 @@ import './Profile.scss';
 import Myposts from './MyPosts/Myposts';
 import ProfileAvatar from './ProfileAvatar/ProfileAvatar';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
+import { ProfileType } from '../../../testState/state';
 
-export default function Profile({ profile }) {
+type PropsType = {
+  profile: ProfileType;
+};
+
+export default function Profile(props: PropsType) {
   return (
     <div className="profile">
       <div className="profile__left">
@@ -13,7 +18,7 @@ export default function Profile({ profile }) {
 
       <div className="profile__right">
         <ProfileInfo />
-        <Myposts postData={profile.postData} />
+        <Myposts postData={props.profile.postData} />
       </div>
     </div>
   );

@@ -2,13 +2,18 @@ import React from 'react';
 import DialogItem from './DialogItem/DialogItem';
 import './Dialogs.scss';
 import Message from './Message/Message';
+import { DialogsType } from '../../../testState/state';
 
-export default function Dialogs({ dialogs }) {
+type PropsType = {
+  dialogs: DialogsType;
+};
+
+export default function Dialogs(props: PropsType) {
   return (
     <div className="dialogs">
       <div className="dialogs__contacts">
-        {dialogs.dialogsData.map(user => (
-          <DialogItem name={user.name} key={user.id} image={user.image} />
+        {props.dialogs.dialogsData.map(user => (
+          <DialogItem name={user.name} key={user.id} id={user.id} image={user.image} />
         ))}
       </div>
 
@@ -17,7 +22,7 @@ export default function Dialogs({ dialogs }) {
           <div className="dialogs__messages__user_name">Sofia Zaulychnova</div>
         </div>
 
-        {dialogs.messagesData.map(mess => (
+        {props.dialogs.messagesData.map(mess => (
           <Message
             key={mess.id}
             message={mess.messages}
