@@ -11,7 +11,7 @@ export type DialogsDataType = {
   image: string;
 };
 
-type messagesData = {
+export type messagesData = {
   id: number;
   messages: string;
   image: string;

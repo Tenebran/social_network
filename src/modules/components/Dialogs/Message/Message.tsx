@@ -1,14 +1,20 @@
 import React from 'react';
 import './Message.scss';
 
-export default function Message({ message, userName, userIcon }) {
+type PropsType = {
+  userIcon: string;
+  userName: string;
+  message: string;
+};
+
+export default function Message(props: PropsType) {
   return (
     <div className="dialogs__messages__item">
       <div className="dialogs__messages__wrapper">
-        <img className="dialogs__messages__avatar" alt="avatar" src={userIcon}></img>
+        <img className="dialogs__messages__avatar" alt="avatar" src={props.userIcon}></img>
         <div>
-          <span className="dialogs__messages_user">{userName}</span>
-          <div className="dialogs__messages__messag">{message}</div>
+          <span className="dialogs__messages_user">{props.userName}</span>
+          <div className="dialogs__messages__messag">{props.message}</div>
         </div>
       </div>
     </div>

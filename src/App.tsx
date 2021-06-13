@@ -5,7 +5,7 @@ import Profile from './modules/components/Profile/Profile';
 import Dialogs from './modules/components/Dialogs/Dialogs';
 import News from './modules/components/News/News';
 import Music from './modules/components/Music/Music';
-import Settings from './modules/components/Music/Music';
+import Settings from './modules/components/Settings/Settings';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { RootStateType } from './testState/state';
 
