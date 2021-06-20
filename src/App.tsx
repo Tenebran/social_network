@@ -11,6 +11,7 @@ import { RootStateType } from './testState/state';
 
 type PropsTYpe = {
   state: RootStateType;
+  addPost: (value: string) => void;
 };
 
 function App(props: PropsTYpe) {
@@ -23,7 +24,7 @@ function App(props: PropsTYpe) {
           <Switch>
             <Route
               path="/profile"
-              component={() => <Profile profile={props.state.profile} />}
+              component={() => <Profile profile={props.state.profile} addPost={props.addPost} />}
             ></Route>
             <Route
               path="/dialogs"

@@ -21,15 +21,16 @@ export default function Dialogs(props: PropsType) {
         <div className="dialogs__messages__header">
           <div className="dialogs__messages__user_name">Sofia Zaulychnova</div>
         </div>
-
-        {props.dialogs.messagesData.map(mess => (
-          <Message
-            key={mess.id}
-            message={mess.messages}
-            userIcon={mess.image}
-            userName={mess.userName}
-          />
-        ))}
+        <div className="dialogs__messages-box">
+          {props.dialogs.messagesData.map(mess => (
+            <Message
+              key={mess.id}
+              message={mess.messages}
+              userIcon={mess.image}
+              userName={mess.userName}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

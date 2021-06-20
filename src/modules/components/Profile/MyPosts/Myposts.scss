@@ -24,12 +24,14 @@
   }
 
   &_areaOn {
-    padding: 20px;
+    padding: 10px;
     width: 90%;
     outline: none;
     border: none;
     resize: none;
+    height: 100px;
   }
+
   &_areaOff {
     padding: 10px;
     width: 90%;

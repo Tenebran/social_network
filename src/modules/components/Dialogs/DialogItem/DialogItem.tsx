@@ -4,7 +4,7 @@ import './DialogItem.scss';
 
 type PropsType = {
   name: string;
-  id: number;
+  id: string;
   image: string;
 };
 

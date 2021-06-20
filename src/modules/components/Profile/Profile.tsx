@@ -7,6 +7,7 @@ import { ProfileType } from '../../../testState/state';
 
 type PropsType = {
   profile: ProfileType;
+  addPost: (value: string) => void;
 };
 
 export default function Profile(props: PropsType) {
@@ -18,7 +19,7 @@ export default function Profile(props: PropsType) {
 
       <div className="profile__right">
         <ProfileInfo />
-        <Myposts postData={props.profile.postData} />
+        <Myposts postData={props.profile.postData} addPost={props.addPost} />
       </div>
     </div>
   );

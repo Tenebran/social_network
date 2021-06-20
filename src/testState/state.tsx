@@ -1,18 +1,20 @@
+import { v1 } from 'uuid';
+
 export type PostDataType = {
-  id?: number;
+  id?: string;
   image: string;
   like: number;
   messages: string;
 };
 
 export type DialogsDataType = {
-  id: number;
+  id: string;
   name: string;
   image: string;
 };
 
 export type messagesData = {
-  id: number;
+  id: string;
   messages: string;
   image: string;
   userName: string;
@@ -40,37 +42,37 @@ let state: RootStateType = {
   profile: {
     postData: [
       {
-        id: 1,
+        id: v1(),
         messages: 'Hello',
         image: userImage,
         like: 10,
       },
       {
-        id: 2,
+        id: v1(),
         messages: 'fhtrh',
         image: userImage,
         like: 12,
       },
       {
-        id: 3,
+        id: v1(),
         messages: 'fdhtrhrthrthrhzt',
         image: userImage,
         like: 13,
       },
       {
-        id: 4,
+        id: v1(),
         messages: 'dhghrtdhrthtrhtrhtr',
         image: userImage,
         like: 18,
       },
       {
-        id: 5,
+        id: v1(),
         messages: 'hgdhtthhtehte',
         image: userImage,
         like: 11,
       },
       {
-        id: 6,
+        id: v1(),
         messages: 'dghtehz4rnm',
         image: userImage,
         like: 11,
@@ -81,32 +83,32 @@ let state: RootStateType = {
   dialogs: {
     dialogsData: [
       {
-        id: 1,
+        id: v1(),
         name: 'Sofia Zaulychnova',
         image: userImage,
       },
       {
-        id: 2,
+        id: v1(),
         name: 'fhtrh',
         image: userImage,
       },
       {
-        id: 3,
+        id: v1(),
         name: 'fdhtrhrthrthrhzt',
         image: userImage,
       },
       {
-        id: 4,
+        id: v1(),
         name: 'dhghrtdhrthtrhtrhtr',
         image: userImage,
       },
       {
-        id: 5,
+        id: v1(),
         name: 'hgdhtthhtehte',
         image: userImage,
       },
       {
-        id: 6,
+        id: v1(),
         name: 'dghtehz4rnm',
         image: userImage,
       },
@@ -114,43 +116,59 @@ let state: RootStateType = {
 
     messagesData: [
       {
-        id: 1,
+        id: v1(),
         messages: 'Hello',
         image: userImage,
         userName: 'Sofia Zaulychnova',
       },
       {
-        id: 2,
+        id: v1(),
         messages: 'fhtrh',
         image: userImage,
         userName: 'Sofia Zaulychnova',
       },
       {
-        id: 3,
+        id: v1(),
         messages: 'fdhtrhrthrthrhzt',
         image: userImage,
         userName: 'Sofia Zaulychnova',
       },
       {
-        id: 4,
+        id: v1(),
         messages: 'dhghrtdhrthtrhtrhtr',
         image: userImage,
         userName: 'Sofia Zaulychnova',
       },
       {
-        id: 5,
+        id: v1(),
         messages: 'hgdhtthhtehte',
         image: userImage,
         userName: 'Sofia Zaulychnova',
       },
       {
-        id: 6,
+        id: v1(),
         messages: 'dghtehz4rnm',
         image: userImage,
         userName: 'Sofia Zaulychnova',
       },
     ],
   },
+};
+
+let rerenderEntireTree = (state: RootStateType) => {
+  console.log('State chaged');
+};
+
+export let addPost = (postMassage: string) => {
+  let newPost = {
+    id: v1(),
+    messages: postMassage,
+    image: userImage,
+    like: 100,
+  };
+
+  state.profile.postData.unshift(newPost);
+  rerenderEntireTree(state);
 };
 
 export default state;
