@@ -6,12 +6,13 @@ import Dialogs from './modules/components/Dialogs/Dialogs';
 import News from './modules/components/News/News';
 import Music from './modules/components/Music/Music';
 import Settings from './modules/components/Settings/Settings';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { RootStateType } from './testState/state';
 
 type PropsTYpe = {
   state: RootStateType;
   addPost: (value: string) => void;
+  addMessage: (value: string) => void;
 };
 
 function App(props: PropsTYpe) {
@@ -28,11 +29,16 @@ function App(props: PropsTYpe) {
             ></Route>
             <Route
               path="/dialogs"
-              component={() => <Dialogs dialogs={props.state.dialogs} />}
+              component={() => (
+                <Dialogs dialogs={props.state.dialogs} addMessage={props.addMessage} />
+              )}
             ></Route>
             <Route path="/news" component={() => <News />}></Route>
             <Route path="/music" component={() => <Music />}></Route>
             <Route path="/settings" component={() => <Settings />}></Route>
+            <Route path="*" exact>
+              <Redirect to="/profile" />
+            </Route>
           </Switch>
         </div>
       </div>

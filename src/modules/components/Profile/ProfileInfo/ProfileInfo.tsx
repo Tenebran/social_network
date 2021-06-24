@@ -5,16 +5,16 @@ export default function ProfileInfo() {
   return (
     <div className="profile__person">
       <div className="profile__person_wrapp">
-        <span className="profile__person_name">Iruska test</span>
-        <span className="profile__person_surname">Stepanyuk</span>
+        <span className="profile__person_name">Sergiy</span>
+        <span className="profile__person_surname">Garkusha</span>
       </div>
       <div className="profile__label">
         <span className="profile__label-name"> Birthday:</span>
-        <span className="profile__label-more">September 12, 2000</span>
+        <span className="profile__label-more">April 04, 1994</span>
       </div>
       <div className="profile__label">
         <span className="profile__label-name"> Current city:</span>
-        <span className="profile__label-more">Odessa</span>
+        <span className="profile__label-more">Rostov</span>
       </div>
       <div className="profile__friends">
         <img

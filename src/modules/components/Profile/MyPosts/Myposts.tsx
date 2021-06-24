@@ -40,7 +40,7 @@ export default function Myposts(props: PropsType) {
           <img
             alt="avatar"
             className="profile__person__avatar"
-            src="https://sun9-72.userapi.com/impf/c840431/v840431829/430f3/3aV51o5M5ng.jpg?size=640x428&quality=96&sign=7811429587d08016511bee6a72bb1f1b&type=album"
+            src="https://sun9-8.userapi.com/impf/c841537/v841537085/99b1/4grSL5x_cg8.jpg?size=2560x1440&quality=96&sign=c984b423f823ed80c9ad893c6e36c00c&type=album"
           ></img>
           <textarea
             value={title}
@@ -51,6 +51,14 @@ export default function Myposts(props: PropsType) {
           ></textarea>
         </div>
         <div className="profile__person__button-wrapper">
+          {blur ? (
+            <button className="profile__person__button" onClick={() => setBlur(false)}>
+              Close
+            </button>
+          ) : (
+            ''
+          )}
+
           {blur ? (
             <button className="profile__person__button" onClick={addPost}>
               Post

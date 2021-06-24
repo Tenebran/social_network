@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import './Message.scss';
 
 type PropsType = {
@@ -8,6 +8,16 @@ type PropsType = {
 };
 
 export default function Message(props: PropsType) {
+  const messagesEndRef = useRef<null | HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [props.message]);
+
   return (
     <div className="dialogs__messages__item">
       <div className="dialogs__messages__wrapper">
@@ -15,6 +25,7 @@ export default function Message(props: PropsType) {
         <div>
           <span className="dialogs__messages_user">{props.userName}</span>
           <div className="dialogs__messages__messag">{props.message}</div>
+          <div ref={messagesEndRef} />
         </div>
       </div>
     </div>

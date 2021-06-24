@@ -1,0 +1,41 @@
+.dialogs-area {
+  width: 100%;
+  height: 100px;
+  background-color: #ecf0f3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 0 0 0;
+
+  &_text {
+    padding: 10px;
+    width: 85%;
+    min-height: 70px;
+    outline: none;
+    border: none;
+    resize: none;
+  }
+
+  &__button {
+    background-color: rgb(81, 129, 184);
+    color: rgb(255, 255, 255);
+    padding: 7px 16px 8px;
+    width: 70px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 12.5px;
+    border-radius: 5px;
+    transition: 0.7s;
+    border: none;
+    right: 0;
+    margin: 0 0 0 10px;
+
+    &:hover {
+      background-color: rgb(77, 109, 146);
+    }
+  }
+}
+
+.area-error::-webkit-input-placeholder {
+  color: #ff5f5f;
+}

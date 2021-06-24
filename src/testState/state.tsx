@@ -36,7 +36,7 @@ export type RootStateType = {
 };
 
 let userImage =
-  'https://sun1-87.userapi.com/s/v1/ig2/cgURU66rcM0MDXpDB-lP4i1uJ_x84k0fVZ9HDyr9MorW4wmHO5C9Ix8XZigcNNq-DgS2Em9rMGzz-klIwyeMjyY1.jpg?size=400x0&quality=96&crop=1,271,1615,1615&ava=1';
+  'https://sun9-8.userapi.com/impf/c841537/v841537085/99b1/4grSL5x_cg8.jpg?size=2560x1440&quality=96&sign=c984b423f823ed80c9ad893c6e36c00c&type=album';
 
 let state: RootStateType = {
   profile: {
@@ -49,7 +49,7 @@ let state: RootStateType = {
       },
       {
         id: v1(),
-        messages: 'fhtrh',
+        messages: 'Heloooooooooooooooooooooooooooooooooooooooooooo',
         image: userImage,
         like: 12,
       },
@@ -84,32 +84,32 @@ let state: RootStateType = {
     dialogsData: [
       {
         id: v1(),
-        name: 'Sofia Zaulychnova',
+        name: 'Sergiy Garkusha',
         image: userImage,
       },
       {
         id: v1(),
-        name: 'fhtrh',
+        name: 'Sergiy Garkusha',
         image: userImage,
       },
       {
         id: v1(),
-        name: 'fdhtrhrthrthrhzt',
+        name: 'Sergiy Garkusha',
         image: userImage,
       },
       {
         id: v1(),
-        name: 'dhghrtdhrthtrhtrhtr',
+        name: 'Sergiy Garkusha',
         image: userImage,
       },
       {
         id: v1(),
-        name: 'hgdhtthhtehte',
+        name: 'Sergiy Garkusha',
         image: userImage,
       },
       {
         id: v1(),
-        name: 'dghtehz4rnm',
+        name: 'Sergiy Garkusha',
         image: userImage,
       },
     ],
@@ -119,37 +119,37 @@ let state: RootStateType = {
         id: v1(),
         messages: 'Hello',
         image: userImage,
-        userName: 'Sofia Zaulychnova',
+        userName: 'Sergiy Garkusha',
       },
       {
         id: v1(),
         messages: 'fhtrh',
         image: userImage,
-        userName: 'Sofia Zaulychnova',
+        userName: 'Sergiy Garkusha',
       },
       {
         id: v1(),
         messages: 'fdhtrhrthrthrhzt',
         image: userImage,
-        userName: 'Sofia Zaulychnova',
+        userName: 'Sergiy Garkusha',
       },
       {
         id: v1(),
         messages: 'dhghrtdhrthtrhtrhtr',
         image: userImage,
-        userName: 'Sofia Zaulychnova',
+        userName: 'Sergiy Garkusha',
       },
       {
         id: v1(),
         messages: 'hgdhtthhtehte',
         image: userImage,
-        userName: 'Sofia Zaulychnova',
+        userName: 'Sergiy Garkusha',
       },
       {
         id: v1(),
         messages: 'dghtehz4rnm',
         image: userImage,
-        userName: 'Sofia Zaulychnova',
+        userName: 'Sergiy Garkusha',
       },
     ],
   },
@@ -169,6 +169,16 @@ export let addPost = (postMassage: string) => {
 
   state.profile.postData.unshift(newPost);
   rerenderEntireTree(state);
+};
+
+export let addMessage = (postMassage: string) => {
+  let newMessages = {
+    id: v1(),
+    messages: postMassage,
+    image: userImage,
+    userName: 'Sergiy Garkusha',
+  };
+  state.dialogs.messagesData.push(newMessages);
 };
 
 export default state;
