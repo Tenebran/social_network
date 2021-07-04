@@ -7,15 +7,14 @@ import News from './modules/components/News/News';
 import Music from './modules/components/Music/Music';
 import Settings from './modules/components/Settings/Settings';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import { RootStateType } from './testState/state';
+import { StoreType } from './store/store';
 
 type PropsTYpe = {
-  state: RootStateType;
-  addPost: (value: string) => void;
-  addMessage: (value: string) => void;
+  store: StoreType;
 };
 
 function App(props: PropsTYpe) {
+  const state = props.store.getState();
   return (
     <Router>
       <div className="social__wrapper">
@@ -25,12 +24,20 @@ function App(props: PropsTYpe) {
           <Switch>
             <Route
               path="/profile"
-              component={() => <Profile profile={props.state.profile} addPost={props.addPost} />}
+              component={() => (
+                <Profile
+                  profile={state.profile}
+                  dispatch={props.store.dispatch.bind(props.store)}
+                />
+              )}
             ></Route>
             <Route
               path="/dialogs"
               component={() => (
-                <Dialogs dialogs={props.state.dialogs} addMessage={props.addMessage} />
+                <Dialogs
+                  dialogs={state.dialogs}
+                  dispatch={props.store.dispatch.bind(props.store)}
+                />
               )}
             ></Route>
             <Route path="/news" component={() => <News />}></Route>

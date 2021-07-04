@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from 'react';
 import './DialogsTextArea.scss';
-import { messagesData } from '../../../../testState/state';
+import { messagesData } from '../../../../store/store';
 
 type PropsType = {
   newMessages: Array<messagesData>;

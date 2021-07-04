@@ -1,6 +1,6 @@
 import React from 'react';
 import './Posts.scss';
-import { PostDataType } from '../../../../../testState/state';
+import { PostDataType } from '../../../../../store/store';
 
 export default function Posts(props: PostDataType) {
   return (

@@ -3,11 +3,11 @@ import './Profile.scss';
 import Myposts from './MyPosts/Myposts';
 import ProfileAvatar from './ProfileAvatar/ProfileAvatar';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
-import { ProfileType } from '../../../testState/state';
+import { ProfileType, ActionTypes } from '../../../store/store';
 
 type PropsType = {
   profile: ProfileType;
-  addPost: (value: string) => void;
+  dispatch: (action: ActionTypes) => void;
 };
 
 export default function Profile(props: PropsType) {
@@ -19,7 +19,7 @@ export default function Profile(props: PropsType) {
 
       <div className="profile__right">
         <ProfileInfo />
-        <Myposts postData={props.profile.postData} addPost={props.addPost} />
+        <Myposts postData={props.profile.postData} dispatch={props.dispatch} />
       </div>
     </div>
   );
