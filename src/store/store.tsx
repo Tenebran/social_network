@@ -41,16 +41,7 @@ let userImage =
 
 type subscribeType = () => void;
 
-export type addPostActionType = {
-  type: 'ADD-POST';
-  postMessage: string;
-};
-export type addMessageActionType = {
-  type: 'ADD-MESSAGE';
-  postMessage: string;
-};
-
-export type ActionTypes = addPostActionType | addMessageActionType;
+export type ActionTypes = ReturnType<typeof addPostAC> | ReturnType<typeof addMessageAC>;
 
 export type StoreType = {
   _state: RootStateType;
@@ -240,6 +231,20 @@ const store: StoreType = {
       this._rerenderEntire();
     }
   },
+};
+
+export const addPostAC = (title: string) => {
+  return {
+    type: 'ADD-POST',
+    postMessage: title,
+  } as const;
+};
+
+export const addMessageAC = (title: string) => {
+  return {
+    type: 'ADD-MESSAGE',
+    postMessage: title,
+  } as const;
 };
 
 export default store;

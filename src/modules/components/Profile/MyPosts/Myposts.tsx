@@ -1,7 +1,7 @@
 import React, { useState, ChangeEvent } from 'react';
 import './Myposts.scss';
 import Posts from './Post/Posts';
-import { PostDataType, ActionTypes } from '../../../../store/store';
+import { PostDataType, ActionTypes, addPostAC } from '../../../../store/store';
 
 type PropsType = {
   postData: Array<PostDataType>;
@@ -15,7 +15,7 @@ export default function Myposts(props: PropsType) {
 
   let addPost = () => {
     if (title.trim() !== '') {
-      props.dispatch({ type: 'ADD-POST', postMessage: title });
+      props.dispatch(addPostAC(title));
     } else {
       setError('Please Give Text!!!!');
     }
