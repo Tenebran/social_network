@@ -1,4 +1,6 @@
 import { v1 } from 'uuid';
+import { profileReducer } from './profile-reducer';
+import { dialogsReducer } from './dialogs-reducer';
 
 export type PostDataType = {
   id?: string;
@@ -36,7 +38,7 @@ export type RootStateType = {
   dialogs: DialogsType;
 };
 
-let userImage =
+export let userImage =
   'https://sun9-8.userapi.com/impf/c841537/v841537085/99b1/4grSL5x_cg8.jpg?size=2560x1440&quality=96&sign=c984b423f823ed80c9ad893c6e36c00c&type=album';
 
 type subscribeType = () => void;
@@ -210,26 +212,9 @@ const store: StoreType = {
   },
 
   dispatch(action) {
-    if (action.type === 'ADD-POST') {
-      let newPost = {
-        id: v1(),
-        messages: action.postMessage,
-        image: userImage,
-        like: 100,
-      };
-
-      this._state.profile.postData.unshift(newPost);
-      this._rerenderEntire();
-    } else if (action.type === 'ADD-MESSAGE') {
-      let newMessages = {
-        id: v1(),
-        messages: action.postMessage,
-        image: userImage,
-        userName: 'Sergiy Garkusha',
-      };
-      this._state.dialogs.messagesData.push(newMessages);
-      this._rerenderEntire();
-    }
+    this._state.profile = profileReducer(this._state.profile, action);
+    this._state.dialogs = dialogsReducer(this._state.dialogs, action);
+    this._rerenderEntire();
   },
 };
 
