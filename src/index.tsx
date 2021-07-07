@@ -5,6 +5,8 @@ import App from './App';
 import { RootStateType } from './store/store';
 import store from './store/store';
 
+console.log(store);
+
 export let rerenderEntireTree = (state: RootStateType) => {
   ReactDOM.render(<App store={store} />, document.getElementById('root'));
 };

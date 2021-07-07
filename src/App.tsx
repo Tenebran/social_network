@@ -7,13 +7,15 @@ import News from './modules/components/News/News';
 import Music from './modules/components/Music/Music';
 import Settings from './modules/components/Settings/Settings';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import { StoreType } from './store/store';
+import { StoreType, addPostAC, addMessageAC } from './store/store';
 
 type PropsTYpe = {
   store: StoreType;
+  // dispatch: (action: ReturnType<typeof addPostAC> | ReturnType<typeof addMessageAC>) => void;
 };
 
 function App(props: PropsTYpe) {
+  console.log(props);
   const state = props.store.getState();
   return (
     <Router>

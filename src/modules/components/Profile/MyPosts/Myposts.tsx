@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent, KeyboardEvent, useRef } from 'react';
 import './Myposts.scss';
 import Posts from './Post/Posts';
 import { PostDataType, ActionTypes, addPostAC } from '../../../../store/store';
@@ -9,6 +9,7 @@ type PropsType = {
 };
 
 export default function Myposts(props: PropsType) {
+  const inputRef = useRef<HTMLTextAreaElement | null>(null);
   const [blur, setBlur] = useState(false);
   let [title, setTitle] = useState('');
   let [error, setError] = useState<null | string>(null);
@@ -28,9 +29,21 @@ export default function Myposts(props: PropsType) {
     setBlur(true);
   };
 
+  const offFocusHandler = () => {
+    setTimeout(() => setBlur(false), 100);
+  };
+
   const onChangeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setTitle(event.currentTarget.value);
     setError(null);
+  };
+
+  const onKeyPressHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === 'Enter') {
+      addPost();
+      setBlur(true);
+      inputRef.current?.blur();
+    }
   };
 
   return (
@@ -48,17 +61,12 @@ export default function Myposts(props: PropsType) {
             className={blur ? 'profile__person_areaOn' : 'profile__person_areaOff '}
             onFocus={onFocusHandler}
             onChange={onChangeHandler}
+            onBlur={offFocusHandler}
+            onKeyPress={onKeyPressHandler}
+            ref={inputRef}
           ></textarea>
         </div>
         <div className="profile__person__button-wrapper">
-          {blur ? (
-            <button className="profile__person__button" onClick={() => setBlur(false)}>
-              Close
-            </button>
-          ) : (
-            ''
-          )}
-
           {blur ? (
             <button className="profile__person__button" onClick={addPost}>
               Post
