@@ -3,11 +3,11 @@ import DialogItem from './DialogItem/DialogItem';
 import './Dialogs.scss';
 import Message from './Message/Message';
 import DialogsTextArea from './DialogsTextArea/DialogsTextArea';
-import { DialogsType, ActionTypes, addMessageAC } from '../../../store/store';
+import { DialogsType } from '../../../store/store';
 
 type PropsType = {
   dialogs: DialogsType;
-  dispatch: (action: ActionTypes) => void;
+  addMessage: (text: string) => void;
 };
 
 export default function Dialogs(props: PropsType) {
@@ -16,7 +16,7 @@ export default function Dialogs(props: PropsType) {
 
   let addMessage = () => {
     if (message.trim() !== '') {
-      props.dispatch(addMessageAC(message));
+      props.addMessage(message);
       setMessage('');
     } else {
       setError('Please write a message!!!!!');

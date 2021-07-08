@@ -18,6 +18,9 @@ export default function DialogsTextArea(props: PropsType) {
     if (e.key === 'Enter') {
       props.addMessage();
       inputRef.current?.blur();
+      setTimeout(() => {
+        inputRef.current?.focus();
+      }, 200);
     }
   };
 

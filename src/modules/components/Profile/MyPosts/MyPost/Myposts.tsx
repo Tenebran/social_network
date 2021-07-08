@@ -1,11 +1,11 @@
 import React, { useState, ChangeEvent, KeyboardEvent, useRef } from 'react';
 import './Myposts.scss';
-import Posts from './Post/Posts';
-import { PostDataType, ActionTypes, addPostAC } from '../../../../store/store';
+import Posts from '../Post/Posts';
+import { PostDataType } from '../../../../../store/store';
 
 type PropsType = {
   postData: Array<PostDataType>;
-  dispatch: (action: ActionTypes) => void;
+  addPost: (title: string) => void;
 };
 
 export default function Myposts(props: PropsType) {
@@ -16,7 +16,7 @@ export default function Myposts(props: PropsType) {
 
   let addPost = () => {
     if (title.trim() !== '') {
-      props.dispatch(addPostAC(title));
+      props.addPost(title);
     } else {
       setError('Please Give Text!!!!');
     }
@@ -30,7 +30,7 @@ export default function Myposts(props: PropsType) {
   };
 
   const offFocusHandler = () => {
-    setTimeout(() => setBlur(false), 100);
+    setTimeout(() => setBlur(false), 120);
   };
 
   const onChangeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
