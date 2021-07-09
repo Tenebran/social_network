@@ -1,9 +1,9 @@
 import React, { ChangeEvent, KeyboardEvent, useRef } from 'react';
 import './DialogsTextArea.scss';
-import { messagesData } from '../../../../store/store';
+import { MessagesDataType } from '../../../../redux/dialogs-reducer';
 
 type PropsType = {
-  newMessages: Array<messagesData>;
+  newMessages: Array<MessagesDataType>;
   addMessage: () => void;
   onChangeTextArea: (event: ChangeEvent<HTMLTextAreaElement>) => void;
   message: string;

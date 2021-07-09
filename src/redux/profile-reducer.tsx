@@ -1,8 +1,21 @@
 import { v1 } from 'uuid';
-import { ActionTypes, userImage, ProfileType } from '../store/store';
+import { ActionTypes } from './store/store';
+import { userImage } from './userImage';
 const ADD_POST = 'ADD-POST';
 
-let initialState = {
+export type PostDataType = {
+  id?: string;
+  image: string;
+  like: number;
+  messages: string;
+};
+
+export type ProfileType = {
+  postData: Array<PostDataType>;
+  newPostText: string;
+};
+
+let initialState: ProfileType = {
   postData: [
     {
       id: v1(),
@@ -41,10 +54,15 @@ let initialState = {
       like: 11,
     },
   ],
-  newPostText: 'It-kamasutra',
+  newPostText: 'It-Sergej',
 };
 
-export const profileReducer = (state: ProfileType = initialState, action: ActionTypes) => {
+export type initialStateType = typeof initialState;
+
+export const profileReducer = (
+  state: initialStateType = initialState,
+  action: ActionTypes
+): initialStateType => {
   if (action.type === ADD_POST) {
     let newPost = {
       id: v1(),
@@ -57,4 +75,11 @@ export const profileReducer = (state: ProfileType = initialState, action: Action
   }
 
   return state;
+};
+
+export const addPostAC = (title: string) => {
+  return {
+    type: 'ADD-POST',
+    postMessage: title,
+  } as const;
 };

@@ -1,8 +1,27 @@
 import { v1 } from 'uuid';
-import { ActionTypes, DialogsType, userImage } from '../store/store';
+import { ActionTypes } from './store/store';
+import { userImage } from './userImage';
+
+export type MessagesDataType = {
+  id: string;
+  messages: string;
+  image: string;
+  userName: string;
+};
+
+export type DialogsDataType = {
+  id: string;
+  name: string;
+  image: string;
+};
+
+export type DialogsType = {
+  dialogsData: Array<DialogsDataType>;
+  messagesData: Array<MessagesDataType>;
+};
 
 const ADD_MESSAGE = 'ADD-MESSAGE';
-let initialState = {
+let initialState: DialogsType = {
   dialogsData: [
     {
       id: v1(),
@@ -76,7 +95,12 @@ let initialState = {
   ],
 };
 
-export const dialogsReducer = (state: DialogsType = initialState, action: ActionTypes) => {
+export type initialStateType = typeof initialState;
+
+export const dialogsReducer = (
+  state: initialStateType = initialState,
+  action: ActionTypes
+): initialStateType => {
   if (action.type === ADD_MESSAGE) {
     let newMessages = {
       id: v1(),
@@ -87,4 +111,11 @@ export const dialogsReducer = (state: DialogsType = initialState, action: Action
     state.messagesData.push(newMessages);
   }
   return state;
+};
+
+export const addMessageAC = (title: string) => {
+  return {
+    type: 'ADD-MESSAGE',
+    postMessage: title,
+  } as const;
 };

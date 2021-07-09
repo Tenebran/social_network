@@ -1,10 +1,10 @@
 import React, { useState, ChangeEvent, KeyboardEvent, useRef } from 'react';
 import './Myposts.scss';
 import Posts from '../Post/Posts';
-import { PostDataType } from '../../../../../store/store';
+import { ProfileType } from '../../../../../redux/profile-reducer';
 
 type PropsType = {
-  postData: Array<PostDataType>;
+  profile: ProfileType;
   addPost: (title: string) => void;
 };
 
@@ -77,7 +77,7 @@ export default function Myposts(props: PropsType) {
         </div>
       </div>
       <div className="profile__person">
-        {props.postData.map(post => (
+        {props.profile.postData.map(post => (
           <Posts key={post.id} messages={post.messages} image={post.image} like={post.like} />
         ))}
       </div>

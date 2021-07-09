@@ -1,11 +1,42 @@
 import { createStore, combineReducers } from 'redux';
-import { profileReducer } from '../profile-reducer';
-import { dialogsReducer } from '../dialogs-reducer';
+import { profileReducer, addPostAC } from '../profile-reducer';
+import {
+  dialogsReducer,
+  addMessageAC,
+  MessagesDataType,
+  DialogsDataType,
+} from '../dialogs-reducer';
 
-let reducers = combineReducers({ profileReducer, dialogsReducer });
+let reducers = combineReducers({ profile: profileReducer, dialogs: dialogsReducer });
 
 let store = createStore(reducers);
 
 export type StoreType = typeof store;
+
+export type PostDataType = {
+  id?: string;
+  image: string;
+  like: number;
+  messages: string;
+};
+
+export type ProfileType = {
+  postData: Array<PostDataType>;
+  key?: number;
+  newPostText: string;
+};
+
+export type DialogsType = {
+  dialogsData: Array<DialogsDataType>;
+  messagesData: Array<MessagesDataType>;
+};
+
+export type RootStateType = {
+  profile: ProfileType;
+  dialogs: DialogsType;
+};
+
+export type ActionTypes = ReturnType<typeof addPostAC> | ReturnType<typeof addMessageAC>;
+export type AppStateType = ReturnType<typeof reducers>;
 
 export default store;

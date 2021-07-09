@@ -3,7 +3,7 @@ import DialogItem from './DialogItem/DialogItem';
 import './Dialogs.scss';
 import Message from './Message/Message';
 import DialogsTextArea from './DialogsTextArea/DialogsTextArea';
-import { DialogsType } from '../../../store/store';
+import { DialogsType } from '../../../redux/dialogs-reducer';
 
 type PropsType = {
   dialogs: DialogsType;

@@ -1,6 +1,6 @@
 import React from 'react';
 import './Posts.scss';
-import { PostDataType } from '../../../../../store/store';
+import { PostDataType } from '../../../../../redux/profile-reducer';
 
 export default function Posts(props: PostDataType) {
   return (
