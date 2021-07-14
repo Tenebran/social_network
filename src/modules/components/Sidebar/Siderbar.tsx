@@ -5,6 +5,7 @@ import MusicIcon from '../../iconComponents/MusicIcon';
 import NewsIcon from '../../iconComponents/NewsIcon';
 import ProfileIcon from '../../iconComponents/ProfileIcon';
 import SettingsIcon from '../../iconComponents/SettingsIcon';
+import UsersIcon from '../../iconComponents/UsersIcon';
 import './Siderbar.scss';
 
 export default function Siderbar() {
@@ -22,6 +23,12 @@ export default function Siderbar() {
           <Link to="/dialogs" className="social__sidebar_link">
             <MessagesIcon />
             <span className="social__sidebar_text">Messages</span>
+          </Link>
+        </div>
+        <div className="social__sidebar_wrapper">
+          <Link to="/users" className="social__sidebar_link">
+            <UsersIcon />
+            <span className="social__sidebar_text">Users</span>
           </Link>
         </div>
         <div className="social__sidebar_wrapper">

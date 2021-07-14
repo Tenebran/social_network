@@ -101,16 +101,19 @@ export const dialogsReducer = (
   state: initialStateType = initialState,
   action: ActionTypes
 ): initialStateType => {
-  if (action.type === ADD_MESSAGE) {
-    let newMessages = {
-      id: v1(),
-      messages: action.postMessage,
-      image: userImage,
-      userName: 'Sergiy Garkusha',
-    };
-    state.messagesData.push(newMessages);
+  switch (action.type) {
+    case ADD_MESSAGE:
+      let newMessages = {
+        id: v1(),
+        messages: action.postMessage,
+        image: userImage,
+        userName: 'Sergiy Garkusha',
+      };
+      return { ...state, messagesData: [...state.messagesData, newMessages] };
+
+    default:
+      return state;
   }
-  return state;
 };
 
 export const addMessageAC = (title: string) => {

@@ -6,8 +6,13 @@ import {
   MessagesDataType,
   DialogsDataType,
 } from '../dialogs-reducer';
+import { followAC, unFollowAC, usersReducer, setUsersAC } from '../users-reducer';
 
-let reducers = combineReducers({ profile: profileReducer, dialogs: dialogsReducer });
+let reducers = combineReducers({
+  profile: profileReducer,
+  dialogs: dialogsReducer,
+  users: usersReducer,
+});
 
 let store = createStore(reducers);
 
@@ -36,7 +41,13 @@ export type RootStateType = {
   dialogs: DialogsType;
 };
 
-export type ActionTypes = ReturnType<typeof addPostAC> | ReturnType<typeof addMessageAC>;
+export type ActionTypes =
+  | ReturnType<typeof addPostAC>
+  | ReturnType<typeof addMessageAC>
+  | ReturnType<typeof followAC>
+  | ReturnType<typeof unFollowAC>
+  | ReturnType<typeof setUsersAC>;
+
 export type AppStateType = ReturnType<typeof reducers>;
 
 export default store;

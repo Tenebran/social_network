@@ -12,7 +12,6 @@ export type PostDataType = {
 
 export type ProfileType = {
   postData: Array<PostDataType>;
-  newPostText: string;
 };
 
 let initialState: ProfileType = {
@@ -54,7 +53,6 @@ let initialState: ProfileType = {
       like: 11,
     },
   ],
-  newPostText: 'It-Sergej',
 };
 
 export type initialStateType = typeof initialState;
@@ -63,18 +61,20 @@ export const profileReducer = (
   state: initialStateType = initialState,
   action: ActionTypes
 ): initialStateType => {
-  if (action.type === ADD_POST) {
-    let newPost = {
-      id: v1(),
-      messages: action.postMessage,
-      image: userImage,
-      like: 100,
-    };
+  switch (action.type) {
+    case ADD_POST:
+      let newPost = {
+        id: v1(),
+        messages: action.postMessage,
+        image: userImage,
+        like: 100,
+      };
 
-    state.postData.unshift(newPost);
+      return { ...state, postData: [newPost, ...state.postData] };
+
+    default:
+      return state;
   }
-
-  return state;
 };
 
 export const addPostAC = (title: string) => {
