@@ -7,11 +7,12 @@ const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
 
 export type UsersDataType = {
-  id?: string;
+  id: string;
   followed: boolean;
   fullName: string;
   status: string;
   location: { city: string; country: string };
+  userImage: string;
 };
 
 export type UsersType = {
@@ -19,50 +20,7 @@ export type UsersType = {
 };
 
 let initialState: UsersType = {
-  usersData: [
-    {
-      id: v1(),
-      followed: false,
-      fullName: 'Dmitry',
-      status: 'i am a boss',
-      location: { city: 'Minsk', country: 'Belarus' },
-    },
-    {
-      id: v1(),
-      followed: true,
-      fullName: 'Sergiy',
-      status: 'i am a boss',
-      location: { city: 'Frankenthal', country: 'Germany' },
-    },
-    {
-      id: v1(),
-      followed: false,
-      fullName: 'Olga',
-      status: 'i am a boss',
-      location: { city: 'Moskau', country: 'Russia' },
-    },
-    {
-      id: v1(),
-      followed: false,
-      fullName: 'Victor',
-      status: 'i am a boss',
-      location: { city: 'Rostov', country: 'Russia' },
-    },
-    {
-      id: v1(),
-      followed: true,
-      fullName: 'Sofia',
-      status: 'i am a boss',
-      location: { city: 'Barnaul', country: 'Russsia' },
-    },
-    {
-      id: v1(),
-      followed: false,
-      fullName: 'Nik',
-      status: 'i am a boss',
-      location: { city: 'Berlin', country: 'Germany' },
-    },
-  ],
+  usersData: [],
 };
 
 export type initialStateType = typeof initialState;
