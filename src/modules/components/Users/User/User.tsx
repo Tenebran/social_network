@@ -3,17 +3,17 @@ import React from 'react';
 import { v1 } from 'uuid';
 import { UsersDataType } from '../../../../redux/users-reducer';
 import './User.scss';
+import userAvatar from '../../../assest/image/no-avatar.png';
 
 type PropsType = {
   userName: string;
-  userCity: string;
-  userContry: string;
-  userImage: string;
+  // userCity: string;
+  // userContry: string;
+  userImage: { small: string | null; large: string | null };
   follow: (userId: string) => void;
   unFollow: (userID: string) => void;
   userFollowed: boolean;
   userId: string;
-  setUsers: (users: Array<UsersDataType>) => void;
 };
 
 export default function User(props: PropsType) {
@@ -21,7 +21,11 @@ export default function User(props: PropsType) {
     <div className="user">
       <div className="user__wrapper">
         <div>
-          <img className="user__image" src={props.userImage} alt="avatar" />
+          <img
+            className="user__image"
+            src={props.userImage.large ? props.userImage.large : userAvatar}
+            alt="avatar"
+          />
         </div>
 
         <div>

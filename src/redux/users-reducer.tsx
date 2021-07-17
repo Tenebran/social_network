@@ -9,10 +9,10 @@ const SET_USERS = 'SET_USERS';
 export type UsersDataType = {
   id: string;
   followed: boolean;
-  fullName: string;
-  status: string;
-  location: { city: string; country: string };
-  userImage: string;
+  name: string;
+  status: string | null;
+  location: { city: string | null; country: string | null };
+  photos: { small: string | null; large: string | null };
 };
 
 export type UsersType = {
