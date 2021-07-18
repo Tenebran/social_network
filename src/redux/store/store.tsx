@@ -13,6 +13,7 @@ import {
   setUsersAC,
   setCurrentPageAC,
   setTotalUsersCountAC,
+  setIsFetchingAC,
 } from '../users-reducer';
 
 let reducers = combineReducers({
@@ -55,7 +56,8 @@ export type ActionTypes =
   | ReturnType<typeof unFollowAC>
   | ReturnType<typeof setUsersAC>
   | ReturnType<typeof setCurrentPageAC>
-  | ReturnType<typeof setTotalUsersCountAC>;
+  | ReturnType<typeof setTotalUsersCountAC>
+  | ReturnType<typeof setIsFetchingAC>;
 
 export type AppStateType = ReturnType<typeof reducers>;
 
