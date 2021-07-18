@@ -1,10 +1,9 @@
-import { v1 } from 'uuid';
-import Users from '../modules/components/Users/Users';
 import { ActionTypes } from './store/store';
-import { userImage } from './userImage';
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
 
 export type UsersDataType = {
   id: string;
@@ -17,10 +16,16 @@ export type UsersDataType = {
 
 export type UsersType = {
   usersData: Array<UsersDataType>;
+  pageSize: number;
+  totalUsersCount: number;
+  currentPage: number;
 };
 
 let initialState: UsersType = {
   usersData: [],
+  pageSize: 100,
+  totalUsersCount: 0,
+  currentPage: 1,
 };
 
 export type initialStateType = typeof initialState;
@@ -54,15 +59,27 @@ export const usersReducer = (
     }
 
     case 'SET_USERS': {
-      return { ...state, usersData: [...state.usersData, ...action.users] };
+      return { ...state, usersData: action.users };
     }
 
+    case 'SET_CURRENT_PAGE': {
+      return { ...state, currentPage: action.page };
+    }
+
+    case 'SET_TOTAL_USERS_COUNT': {
+      return { ...state, totalUsersCount: action.currentPage };
+    }
     default:
       return state;
   }
 };
 
-export const followAC = (userID: string) => ({ type: FOLLOW, userID: userID } as const);
-export const unFollowAC = (userID: string) => ({ type: UNFOLLOW, userID: userID } as const);
-export const setUsersAC = (users: Array<UsersDataType>) =>
-  ({ type: SET_USERS, users: users } as const);
+export const followAC = (userID: string) => ({ type: FOLLOW, userID } as const);
+export const unFollowAC = (userID: string) => ({ type: UNFOLLOW, userID } as const);
+export const setUsersAC = (users: Array<UsersDataType>) => ({ type: SET_USERS, users } as const);
+export const setCurrentPageAC = (page: number) => ({ type: SET_CURRENT_PAGE, page } as const);
+export const setTotalUsersCountAC = (currentPage: number) =>
+  ({
+    type: SET_TOTAL_USERS_COUNT,
+    currentPage,
+  } as const);

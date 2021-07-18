@@ -6,7 +6,14 @@ import {
   MessagesDataType,
   DialogsDataType,
 } from '../dialogs-reducer';
-import { followAC, unFollowAC, usersReducer, setUsersAC } from '../users-reducer';
+import {
+  followAC,
+  unFollowAC,
+  usersReducer,
+  setUsersAC,
+  setCurrentPageAC,
+  setTotalUsersCountAC,
+} from '../users-reducer';
 
 let reducers = combineReducers({
   profile: profileReducer,
@@ -46,7 +53,9 @@ export type ActionTypes =
   | ReturnType<typeof addMessageAC>
   | ReturnType<typeof followAC>
   | ReturnType<typeof unFollowAC>
-  | ReturnType<typeof setUsersAC>;
+  | ReturnType<typeof setUsersAC>
+  | ReturnType<typeof setCurrentPageAC>
+  | ReturnType<typeof setTotalUsersCountAC>;
 
 export type AppStateType = ReturnType<typeof reducers>;
 

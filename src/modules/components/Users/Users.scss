@@ -7,4 +7,31 @@
   background-color: #fff;
   margin-bottom: 20px;
   width: 100%;
+
+  &__selected {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 20px;
+
+    font-weight: 200;
+    color: rgb(46, 46, 121);
+
+    &_page {
+      font-size: 22px;
+      font-weight: 900;
+      color: brown;
+      margin: 0 4px;
+    }
+
+    &_not {
+      transition: 0.5s;
+      cursor: pointer;
+      margin: 0 10px;
+      &:hover {
+        font-size: 22px;
+        font-weight: 900;
+        transition: 1;
+      }
+    }
+  }
 }
