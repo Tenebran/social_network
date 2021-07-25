@@ -1,9 +1,8 @@
-import userEvent from '@testing-library/user-event';
 import React from 'react';
-import { v1 } from 'uuid';
-import { UsersDataType } from '../../../../redux/users-reducer';
 import './User.scss';
 import userAvatar from '../../../assest/image/no-avatar.png';
+import { NavLink } from 'react-router-dom';
+import { userImage } from '../../../../redux/userImage';
 
 type PropsType = {
   userName: string;
@@ -21,11 +20,13 @@ export default function User(props: PropsType) {
     <div className="user">
       <div className="user__wrapper">
         <div>
-          <img
-            className="user__image"
-            src={props.userImage.large ? props.userImage.large : userAvatar}
-            alt="avatar"
-          />
+          <NavLink to={'./profile' + props.userId}>
+            <img
+              className="user__image"
+              src={props.userImage.large ? props.userImage.large : userAvatar}
+              alt="avatar"
+            />
+          </NavLink>
         </div>
 
         <div>

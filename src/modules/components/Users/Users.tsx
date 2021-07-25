@@ -1,6 +1,5 @@
-import axios from 'axios';
 import React from 'react';
-import { UsersType, UsersDataType } from '../../../redux/users-reducer';
+import { UsersType } from '../../../redux/users-reducer';
 import User from './User/User';
 import './Users.scss';
 

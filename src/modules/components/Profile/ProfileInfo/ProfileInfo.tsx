@@ -1,16 +1,31 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { ProfileData } from '../../../../redux/profile-reducer';
+import ProfileInfoContacts from './ProfileInfoContacts/ProfileInfoContacts';
 import './ProfileInfo.scss';
 
-export default function ProfileInfo() {
+type PropsType = {
+  profile: ProfileData | undefined;
+};
+
+export default function ProfileInfo(props: PropsType) {
   return (
     <div className="profile__person">
       <div className="profile__person_wrapp">
         <span className="profile__person_name">Sergiy</span>
         <span className="profile__person_surname">Garkusha</span>
+
+        <div className="profile__label-status">
+          <div className="profile__label-name">Status:</div>
+          <span className="profile__label-more">
+            {props.profile?.aboutMe ? props.profile?.aboutMe : ''}
+          </span>
+        </div>
       </div>
       <div className="profile__label">
-        <span className="profile__label-name">Birthday:</span>
-        <span className="profile__label-more">April 04, 1994</span>
+        <div className="profile__label-name">Contacts:</div>
+
+        <ProfileInfoContacts contacts={props.profile?.contacts} />
       </div>
       <div className="profile__label">
         <span className="profile__label-name">Current city:</span>
