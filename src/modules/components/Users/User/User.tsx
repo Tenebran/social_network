@@ -2,7 +2,6 @@ import React from 'react';
 import './User.scss';
 import userAvatar from '../../../assest/image/no-avatar.png';
 import { NavLink } from 'react-router-dom';
-import { userImage } from '../../../../redux/userImage';
 
 type PropsType = {
   userName: string;
@@ -20,7 +19,7 @@ export default function User(props: PropsType) {
     <div className="user">
       <div className="user__wrapper">
         <div>
-          <NavLink to={'./profile' + props.userId}>
+          <NavLink to={`./profile/${props.userId}`}>
             <img
               className="user__image"
               src={props.userImage.large ? props.userImage.large : userAvatar}

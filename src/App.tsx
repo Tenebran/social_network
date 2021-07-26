@@ -16,7 +16,7 @@ function App() {
       <div className="content__conteiner content__conteiner_menu">
         <Siderbar />
         <Switch>
-          <Route path="/profile" component={() => <ProfileConteiner />}></Route>
+          <Route path="/profile/:userId?" component={() => <ProfileConteiner />}></Route>
           <Route path="/dialogs" component={() => <DialogsContainer />}></Route>
           <Route path="/users" component={() => <UsersConteiner />}></Route>
           <Route path="/news" component={() => <News />}></Route>

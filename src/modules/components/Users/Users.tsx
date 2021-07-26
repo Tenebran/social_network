@@ -45,8 +45,6 @@ export default function Users(props: PropsType) {
             key={user.id}
             userId={user.id}
             userName={user.name}
-            // userCity={user.location.city}
-            // userContry={user.location.country}
             userImage={user.photos}
             userFollowed={user.followed}
             follow={props.follow}

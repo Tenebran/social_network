@@ -17,14 +17,29 @@ type PropsType = {
 };
 
 export default function ProfileInfoContacts(props: PropsType) {
+  const faceboock = props.contacts?.facebook
+    ? props.contacts?.facebook.replace('https://', '')
+    : null;
+  const github = props.contacts?.github ? props.contacts?.github.replace('https://', '') : null;
+  const instagram = props.contacts?.instagram
+    ? props.contacts?.instagram.replace('https://', '')
+    : null;
+  const mainLink = props.contacts?.mainLink
+    ? props.contacts?.mainLink.replace('https://', '')
+    : null;
+  const vk = props.contacts?.vk ? props.contacts?.vk.replace('https://', '') : null;
+  const website = props.contacts?.website ? props.contacts?.website.replace('https://', '') : null;
+  const youtube = props.contacts?.youtube ? props.contacts?.youtube.replace('https://', '') : null;
+
   return (
     <div className="profile__label-more">
       <div className="contacts__link">
-        {props.contacts?.facebook ? (
+        {faceboock ? (
           <a
             className="profile__label-link"
-            href={`https://${props.contacts?.facebook}`}
+            href={`https://${faceboock}`}
             target="_blank"
+            rel="noreferrer"
           >
             Faceboock
           </a>
@@ -33,11 +48,12 @@ export default function ProfileInfoContacts(props: PropsType) {
         )}
       </div>
       <div className="contacts__link">
-        {props.contacts?.github ? (
+        {github ? (
           <a
             className="profile__label-link"
-            href={`https://${props.contacts?.github}`}
+            href={`https://${github}`}
             target="_blank"
+            rel="noreferrer"
           >
             Github
           </a>
@@ -46,11 +62,12 @@ export default function ProfileInfoContacts(props: PropsType) {
         )}
       </div>
       <div className="contacts__link">
-        {props.contacts?.instagram ? (
+        {instagram ? (
           <a
             className="profile__label-link"
-            href={`https://${props.contacts?.instagram}`}
+            href={`https://${instagram}`}
             target="_blank"
+            rel="noreferrer"
           >
             Instagram
           </a>
@@ -59,11 +76,12 @@ export default function ProfileInfoContacts(props: PropsType) {
         )}
       </div>
       <div className="contacts__link">
-        {props.contacts?.mainLink ? (
+        {mainLink ? (
           <a
             className="profile__label-link"
-            href={`https://${props.contacts?.mainLink}`}
+            href={`https://${mainLink}`}
             target="_blank"
+            rel="noreferrer"
           >
             MainLink
           </a>
@@ -72,8 +90,13 @@ export default function ProfileInfoContacts(props: PropsType) {
         )}
       </div>
       <div className="contacts__link">
-        {props.contacts?.vk ? (
-          <a className="profile__label-link" href={`https://${props.contacts?.vk}`} target="_blank">
+        {vk ? (
+          <a
+            className="profile__label-link"
+            href={`https://${vk}`}
+            target="_blank"
+            rel="noreferrer"
+          >
             vk
           </a>
         ) : (
@@ -81,11 +104,12 @@ export default function ProfileInfoContacts(props: PropsType) {
         )}
       </div>
       <div className="contacts__link">
-        {props.contacts?.website ? (
+        {website ? (
           <a
             className="profile__label-link"
-            href={`https://${props.contacts?.website}`}
+            href={`https://${website}`}
             target="_blank"
+            rel="noreferrer"
           >
             Website
           </a>
@@ -94,11 +118,12 @@ export default function ProfileInfoContacts(props: PropsType) {
         )}
       </div>
       <div className="contacts__link">
-        {props.contacts?.youtube ? (
+        {youtube ? (
           <a
             className="profile__label-link"
-            href={`https://${props.contacts?.youtube}`}
+            href={`https://${youtube}`}
             target="_blank"
+            rel="noreferrer"
           >
             Youtube
           </a>

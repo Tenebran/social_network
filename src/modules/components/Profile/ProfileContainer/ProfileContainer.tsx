@@ -1,37 +1,53 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Profile from '../Profile';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { AppStateType, StoreType } from '../../../../redux/store/store';
-import {
-  initialStateType,
-  PostDataType,
-  ProfileData,
-  setUsersProfile,
-} from '../../../../redux/profile-reducer';
+import { AppStateType } from '../../../../redux/store/store';
+import { ProfileData, setUsersProfile, setIsFetching } from '../../../../redux/profile-reducer';
+import Loader from '../../../iconComponents/Loader/Loader';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 
-type PropsType = {
+type OwnPropsType = {
   setUsersProfile: (profileInfo: ProfileData) => void;
+  setIsFetching: (fetching: boolean) => void;
+  isFetching: boolean;
 };
+
+type MapStateToPropsType = {
+  profileInfo: ProfileData;
+  isFetching: boolean;
+};
+
+type PathParamsType = {
+  userId: string;
+};
+
+type PropsType = RouteComponentProps<PathParamsType> & OwnPropsType;
 
 class ProfileContainer extends React.Component<PropsType> {
   componentDidMount() {
-    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/2`).then(response => {
+    let userId = this.props.match.params.userId;
+    if (!userId) {
+      userId = '2';
+    }
+    this.props.setIsFetching(true);
+    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`).then(response => {
       this.props.setUsersProfile(response.data);
+      this.props.setIsFetching(false);
     });
   }
   render() {
-    return <Profile {...this.props} />;
+    return this.props.isFetching ? <Loader /> : <Profile {...this.props} />;
   }
 }
 
-// type MapStateToPropsType = {
-//   profileInfo: initialStateType;
-// };
-
-let mapStateToProps = (state: AppStateType) => ({
+let mapStateToProps = (state: AppStateType): MapStateToPropsType => ({
   profileInfo: state.profile.profileInfo,
+  isFetching: state.profile.isFetching,
 });
 
-// export default ProfileContainer;
-export default connect(mapStateToProps, { setUsersProfile })(ProfileContainer);
+let withUrlDataContainerComponent = withRouter(ProfileContainer);
+
+export default connect(mapStateToProps, { setUsersProfile, setIsFetching })(
+  withUrlDataContainerComponent
+);

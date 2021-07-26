@@ -6,6 +6,7 @@ import { ProfileType } from '../../../../../redux/profile-reducer';
 type PropsType = {
   profile: ProfileType;
   addPost: (title: string) => void;
+  noAvatar: string;
 };
 
 export default function Myposts(props: PropsType) {
@@ -53,7 +54,11 @@ export default function Myposts(props: PropsType) {
           <img
             alt="avatar"
             className="profile__person__avatar"
-            src="https://sun9-8.userapi.com/impf/c841537/v841537085/99b1/4grSL5x_cg8.jpg?size=2560x1440&quality=96&sign=c984b423f823ed80c9ad893c6e36c00c&type=album"
+            src={
+              props.profile.profileInfo.photos.large
+                ? props.profile.profileInfo.photos.large
+                : props.noAvatar
+            }
           ></img>
           <textarea
             value={title}
@@ -78,7 +83,13 @@ export default function Myposts(props: PropsType) {
       </div>
       <div className="profile__person">
         {props.profile.postData.map(post => (
-          <Posts key={post.id} messages={post.messages} image={post.image} like={post.like} />
+          <Posts
+            key={post.id}
+            messages={post.messages}
+            image={props.profile.profileInfo.photos.large}
+            like={post.like}
+            noAvatar={props.noAvatar}
+          />
         ))}
       </div>
     </>

@@ -3,6 +3,7 @@ import { ActionTypes } from './store/store';
 import { userImage } from './userImage';
 const ADD_POST = 'ADD-POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
+const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 
 export type PostDataType = {
   id?: string;
@@ -36,6 +37,7 @@ export type ProfileData = {
 export type ProfileType = {
   postData: Array<PostDataType>;
   profileInfo: ProfileData;
+  isFetching: boolean;
 };
 
 let initialState: ProfileType = {
@@ -99,6 +101,7 @@ let initialState: ProfileType = {
       large: null,
     },
   },
+  isFetching: false,
 };
 
 export type initialStateType = typeof initialState;
@@ -122,6 +125,9 @@ export const profileReducer = (
     case 'SET_USER_PROFILE': {
       return { ...state, profileInfo: action.profileInfo };
     }
+    case 'TOGGLE_IS_FETCHING': {
+      return { ...state, isFetching: action.isFetching };
+    }
 
     default:
       return state;
@@ -137,3 +143,5 @@ export const addPostAC = (title: string) => {
 
 export const setUsersProfile = (profileInfo: ProfileData) =>
   ({ type: SET_USER_PROFILE, profileInfo } as const);
+export const setIsFetching = (isFetching: boolean) =>
+  ({ type: TOGGLE_IS_FETCHING, isFetching } as const);

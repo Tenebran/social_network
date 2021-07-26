@@ -3,9 +3,8 @@ import './Profile.scss';
 import ProfileAvatar from './ProfileAvatar/ProfileAvatar';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import MypostsContainer from './MyPosts/MypostsContainer';
-import { PostDataType, ProfileData, ProfileType } from '../../../redux/profile-reducer';
-
-type setUsersProfile = (profile: ProfileData) => void;
+import { ProfileData } from '../../../redux/profile-reducer';
+import noAvatar from '../../assest/image/no-avatar.png';
 
 type PropsType = {
   profileInfo?: ProfileData;
@@ -16,10 +15,10 @@ export default function Profile(props: PropsType) {
   return (
     <div className="profile">
       <div className="profile__left">
-        <ProfileAvatar image={props.profileInfo?.photos} />
+        <ProfileAvatar image={props.profileInfo?.photos} noAvatar={noAvatar} />
       </div>
       <div className="profile__right">
-        <ProfileInfo profile={props.profileInfo} />
+        <ProfileInfo profile={props.profileInfo} noAvatar={noAvatar} />
         <MypostsContainer />
       </div>
     </div>

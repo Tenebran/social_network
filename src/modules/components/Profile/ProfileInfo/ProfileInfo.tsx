@@ -1,19 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
 import { ProfileData } from '../../../../redux/profile-reducer';
 import ProfileInfoContacts from './ProfileInfoContacts/ProfileInfoContacts';
 import './ProfileInfo.scss';
 
 type PropsType = {
   profile: ProfileData | undefined;
+  noAvatar: string;
 };
 
 export default function ProfileInfo(props: PropsType) {
   return (
     <div className="profile__person">
       <div className="profile__person_wrapp">
-        <span className="profile__person_name">Sergiy</span>
-        <span className="profile__person_surname">Garkusha</span>
+        <span className="profile__person_name">{props.profile?.fullName}</span>
 
         <div className="profile__label-status">
           <div className="profile__label-name">Status:</div>
@@ -28,36 +28,38 @@ export default function ProfileInfo(props: PropsType) {
         <ProfileInfoContacts contacts={props.profile?.contacts} />
       </div>
       <div className="profile__label">
-        <span className="profile__label-name">Current city:</span>
-        <span className="profile__label-more">Rostov</span>
+        <span className="profile__label-name">Loking For A Job:</span>
+        <span className="profile__label-more">
+          {props.profile?.lookingForAJob ? props.profile.lookingForAJobDescription : 'No'}
+        </span>
       </div>
       <div className="profile__friends">
         <img
           alt="friends_photo"
           className="profile__friends_photo"
-          src="https://sun9-20.userapi.com/impg/nQo9r7AS1nSeEhiaf3Nt7NrMCUI2rwON_WIE0Q/nq065pRrfmY.jpg?size=1344x2160&quality=95&sign=f8ddbf76f5d328636f0eab77cbcefc68&type=album"
+          src={props.profile?.photos.large ? props.profile?.photos.large : props.noAvatar}
         ></img>
 
         <img
           alt="friends_photo"
           className="profile__friends_photo"
-          src="https://sun9-20.userapi.com/impg/nQo9r7AS1nSeEhiaf3Nt7NrMCUI2rwON_WIE0Q/nq065pRrfmY.jpg?size=1344x2160&quality=95&sign=f8ddbf76f5d328636f0eab77cbcefc68&type=album"
+          src={props.profile?.photos.large ? props.profile?.photos.large : props.noAvatar}
         ></img>
         <img
           alt="friends_photo"
           className="profile__friends_photo"
-          src="https://sun9-20.userapi.com/impg/nQo9r7AS1nSeEhiaf3Nt7NrMCUI2rwON_WIE0Q/nq065pRrfmY.jpg?size=1344x2160&quality=95&sign=f8ddbf76f5d328636f0eab77cbcefc68&type=album"
+          src={props.profile?.photos.large ? props.profile?.photos.large : props.noAvatar}
         ></img>
         <img
           alt="friends_photo"
           className="profile__friends_photo"
-          src="https://sun9-20.userapi.com/impg/nQo9r7AS1nSeEhiaf3Nt7NrMCUI2rwON_WIE0Q/nq065pRrfmY.jpg?size=1344x2160&quality=95&sign=f8ddbf76f5d328636f0eab77cbcefc68&type=album"
+          src={props.profile?.photos.large ? props.profile?.photos.large : props.noAvatar}
         ></img>
 
         <img
           alt="friends_photo"
           className="profile__friends_photo"
-          src="https://sun9-20.userapi.com/impg/nQo9r7AS1nSeEhiaf3Nt7NrMCUI2rwON_WIE0Q/nq065pRrfmY.jpg?size=1344x2160&quality=95&sign=f8ddbf76f5d328636f0eab77cbcefc68&type=album"
+          src={props.profile?.photos.large ? props.profile?.photos.large : props.noAvatar}
         ></img>
       </div>
     </div>

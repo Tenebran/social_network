@@ -1,6 +1,5 @@
 import React from 'react';
 import './ProfileAvatar.scss';
-import noAvatar from '../../../assest/image/no-avatar.png';
 
 type ImageType = {
   large: string | null;
@@ -9,6 +8,7 @@ type ImageType = {
 
 type PropsType = {
   image?: ImageType;
+  noAvatar: string;
 };
 
 export default function ProfileAvatar(props: PropsType) {
@@ -17,7 +17,7 @@ export default function ProfileAvatar(props: PropsType) {
       <img
         alt="profile"
         className="profile__img"
-        src={props.image?.large ? props.image.large : noAvatar}
+        src={props.image?.large ? props.image.large : props.noAvatar}
       ></img>
     </div>
   );

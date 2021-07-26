@@ -11,7 +11,6 @@ import {
   setIsFetching,
 } from '../../../../redux/users-reducer';
 import { AppStateType } from '../../../../redux/store/store';
-import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import Loader from '../../../iconComponents/Loader/Loader';
 import Users from '../Users';
