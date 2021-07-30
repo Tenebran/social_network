@@ -8,11 +8,12 @@ import Settings from './modules/components/Settings/Settings';
 import DialogsContainer from './modules/components/Dialogs/DialogsContainer/DialogsContainer';
 import UsersConteiner from './modules/components/Users/UsersConteiner/UsersConteiner';
 import { Route, Switch, Redirect } from 'react-router-dom';
+import HeaderConteiner from './modules/components/Header/HeaderConteiner/HeaderConteiner';
 
 function App() {
   return (
     <div className="social__wrapper">
-      <Header />
+      <HeaderConteiner />
       <div className="content__conteiner content__conteiner_menu">
         <Siderbar />
         <Switch>

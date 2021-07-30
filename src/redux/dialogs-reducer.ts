@@ -2,6 +2,8 @@ import { v1 } from 'uuid';
 import { ActionTypes } from './store/store';
 import { userImage } from './userImage';
 
+const ADD_MESSAGE = 'ADD-MESSAGE';
+
 export type MessagesDataType = {
   id: string;
   messages: string;
@@ -20,7 +22,6 @@ export type DialogsType = {
   messagesData: Array<MessagesDataType>;
 };
 
-const ADD_MESSAGE = 'ADD-MESSAGE';
 let initialState: DialogsType = {
   dialogsData: [
     {
@@ -118,7 +119,7 @@ export const dialogsReducer = (
 
 export const addMessageAC = (title: string) => {
   return {
-    type: 'ADD-MESSAGE',
+    type: ADD_MESSAGE,
     postMessage: title,
   } as const;
 };

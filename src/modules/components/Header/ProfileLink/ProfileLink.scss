@@ -1,0 +1,30 @@
+.profile-link {
+  min-height: 100%;
+  color: #757f8a;
+
+  &__conteiner {
+    height: 46px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    // margin: 6px 0 0 0;
+    color: rgb(0, 0, 0);
+    font-weight: 900;
+    padding: 6px;
+    transition: 0.5s;
+
+    &:hover {
+      background-color: #f3efef;
+    }
+  }
+
+  &__login {
+    margin: 0 10px 0 0;
+  }
+
+  &__avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+  }
+}

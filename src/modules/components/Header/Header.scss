@@ -15,5 +15,12 @@
       width: 15.99px;
       height: 9.5px;
     }
+
+    &__conteiner {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
   }
 }

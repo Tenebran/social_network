@@ -15,11 +15,13 @@ import {
   setTotalUsersCount,
   setIsFetching,
 } from '../users-reducer';
+import { authReducer, setUserData } from '../auth-reducer';
 
 let reducers = combineReducers({
   profile: profileReducer,
   dialogs: dialogsReducer,
   users: usersReducer,
+  auth: authReducer,
 });
 
 let store = createStore(reducers);
@@ -58,7 +60,8 @@ export type ActionTypes =
   | ReturnType<typeof setCurrentPage>
   | ReturnType<typeof setTotalUsersCount>
   | ReturnType<typeof setIsFetching>
-  | ReturnType<typeof setUsersProfile>;
+  | ReturnType<typeof setUsersProfile>
+  | ReturnType<typeof setUserData>;
 
 export type AppStateType = ReturnType<typeof reducers>;
 
