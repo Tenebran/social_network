@@ -21,29 +21,46 @@
 
   &__follow {
     margin-top: 10px;
-    color: #2a5885;
+    background-color: rgb(81, 129, 184);
+    color: rgb(255, 255, 255);
+    width: 90px;
+    height: 30px;
     cursor: pointer;
-    font-size: 15px;
-    user-select: none;
-
-    &__icon-unfollow {
-      display: inline-block;
-      background: url(data:image/svg+xml;charset=utf-8,%3Csvg%20height%3D%2224%22%20viewBox%3D%221284%20159%2024%2024%22%20width%3D%2224%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20stroke%3D%22%23828a99%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22m1301%20176-10-10%22%2F%3E%3Cpath%20d%3D%22m1291%20176%2010-10%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E);
-      background-position: center;
-      background-repeat: no-repeat;
-      width: 9px;
-      height: 9px;
-      margin-left: 5px;
+    font-size: 12.5px;
+    border-radius: 5px;
+    transition: 0.7s;
+    border: none;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover {
+      background-color: rgb(77, 109, 146);
     }
 
-    &__icon-follow {
-      display: inline-block;
-      background: url(data:image/svg+xml;charset=utf-8,%3Csvg%20height%3D%2210%22%20width%3D%2210%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M6%204V1a1%201%200%2000-2%200v3H1a1%201%200%20000%202h3v3a1%201%200%20002%200V6h3a1%201%200%20000-2z%22%20fill%3D%22%2392a0b1%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E);
-      background-position: center;
-      background-repeat: no-repeat;
-      width: 10px;
-      height: 10px;
-      margin-left: 5px;
+    &__disabled {
+      margin-top: 10px;
+      background-color: #7c7c7c;
+      color: rgb(255, 255, 255);
+      width: 90px;
+      height: 30px;
+      cursor: pointer;
+      font-size: 12.5px;
+      border-radius: 5px;
+      transition: 0.7s;
+      border: none;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &__unfollow {
+    background-color: rgb(184, 81, 81);
+
+    &:hover {
+      background-color: rgb(126, 29, 29);
     }
   }
 }

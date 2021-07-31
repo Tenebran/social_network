@@ -3,13 +3,13 @@
   color: #757f8a;
 
   &__conteiner {
+    font-family: 'Roboto-Black';
     height: 46px;
     font-size: 14px;
     display: flex;
     align-items: center;
-    // margin: 6px 0 0 0;
-    color: rgb(0, 0, 0);
-    font-weight: 900;
+    color: rgb(51, 49, 49);
+    font-weight: 600;
     padding: 6px;
     transition: 0.5s;
 

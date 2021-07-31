@@ -14,6 +14,7 @@ import {
   setCurrentPage,
   setTotalUsersCount,
   setIsFetching,
+  setIsFollowingInProgress,
 } from '../users-reducer';
 import { authReducer, setUserData } from '../auth-reducer';
 
@@ -61,7 +62,8 @@ export type ActionTypes =
   | ReturnType<typeof setTotalUsersCount>
   | ReturnType<typeof setIsFetching>
   | ReturnType<typeof setUsersProfile>
-  | ReturnType<typeof setUserData>;
+  | ReturnType<typeof setUserData>
+  | ReturnType<typeof setIsFollowingInProgress>;
 
 export type AppStateType = ReturnType<typeof reducers>;
 

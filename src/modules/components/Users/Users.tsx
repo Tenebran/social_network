@@ -11,6 +11,7 @@ type PropsType = {
   follow: (userId: string) => void;
   unFollow: (userID: string) => void;
   onPageChanged: (page: number) => void;
+  setIsFollowingInProgress: (fetching: boolean, userId: string) => void;
 };
 
 export default function Users(props: PropsType) {
@@ -49,6 +50,8 @@ export default function Users(props: PropsType) {
             userFollowed={user.followed}
             follow={props.follow}
             unFollow={props.unFollow}
+            setIsFollowingInProgress={props.setIsFollowingInProgress}
+            followingInProgress={props.users.followingInProgress}
           />
         );
       })}

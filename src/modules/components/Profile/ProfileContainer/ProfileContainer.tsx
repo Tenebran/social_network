@@ -6,6 +6,7 @@ import { AppStateType } from '../../../../redux/store/store';
 import { ProfileData, setUsersProfile, setIsFetching } from '../../../../redux/profile-reducer';
 import Loader from '../../../iconComponents/Loader/Loader';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { API } from '../../../api/api';
 
 type OwnPropsType = {
   setUsersProfile: (profileInfo: ProfileData) => void;
@@ -31,8 +32,8 @@ class ProfileContainer extends React.Component<PropsType> {
       userId = '18258';
     }
     this.props.setIsFetching(true);
-    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`).then(response => {
-      this.props.setUsersProfile(response.data);
+    API.getMyProfile(userId).then(data => {
+      this.props.setUsersProfile(data);
       this.props.setIsFetching(false);
     });
   }
