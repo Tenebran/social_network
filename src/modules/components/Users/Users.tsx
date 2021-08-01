@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import { UsersType } from '../../../redux/users-reducer';
 import User from './User/User';
 import './Users.scss';
@@ -11,7 +12,6 @@ type PropsType = {
   follow: (userId: string) => void;
   unFollow: (userID: string) => void;
   onPageChanged: (page: number) => void;
-  setIsFollowingInProgress: (fetching: boolean, userId: string) => void;
 };
 
 export default function Users(props: PropsType) {
@@ -50,7 +50,6 @@ export default function Users(props: PropsType) {
             userFollowed={user.followed}
             follow={props.follow}
             unFollow={props.unFollow}
-            setIsFollowingInProgress={props.setIsFollowingInProgress}
             followingInProgress={props.users.followingInProgress}
           />
         );

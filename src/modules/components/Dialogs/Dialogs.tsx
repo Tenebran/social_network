@@ -4,10 +4,12 @@ import './Dialogs.scss';
 import Message from './Message/Message';
 import DialogsTextArea from './DialogsTextArea/DialogsTextArea';
 import { DialogsType } from '../../../redux/dialogs-reducer';
+import { Redirect } from 'react-router-dom';
 
 type PropsType = {
   dialogs: DialogsType;
   addMessage: (text: string) => void;
+  isAuth: boolean;
 };
 
 export default function Dialogs(props: PropsType) {
@@ -27,6 +29,8 @@ export default function Dialogs(props: PropsType) {
     setMessage(event.currentTarget.value);
     setError(null);
   };
+
+  // if (!props.isAuth) return <Redirect to="/login"></Redirect>; // исправить
 
   return (
     <div className="dialogs">

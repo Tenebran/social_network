@@ -2,7 +2,6 @@ import React from 'react';
 import './User.scss';
 import userAvatar from '../../../assest/image/no-avatar.png';
 import { NavLink } from 'react-router-dom';
-import { API } from '../../../api/api';
 
 type PropsType = {
   userName: string;
@@ -11,8 +10,7 @@ type PropsType = {
   unFollow: (userID: string) => void;
   userFollowed: boolean;
   userId: string;
-  setIsFollowingInProgress: (fetching: boolean, userId: string) => void;
-  followingInProgress: Array<any>;
+  followingInProgress: Array<string>;
 };
 
 export default function User(props: PropsType) {
@@ -41,13 +39,7 @@ export default function User(props: PropsType) {
                   : 'user__follow user__unfollow '
               }
               onClick={() => {
-                props.setIsFollowingInProgress(true, props.userId);
-                API.unFollowUser(props.userId).then(data => {
-                  if (data.resultCode === 0) {
-                    props.unFollow(props.userId);
-                  }
-                  props.setIsFollowingInProgress(false, props.userId);
-                });
+                props.unFollow(props.userId);
               }}
             >
               unfollow
@@ -61,13 +53,7 @@ export default function User(props: PropsType) {
                   : 'user__follow '
               }
               onClick={() => {
-                props.setIsFollowingInProgress(true, props.userId);
-                API.followUser(props.userId).then(data => {
-                  if (data.resultCode === 0) {
-                    props.follow(props.userId);
-                  }
-                  props.setIsFollowingInProgress(false, props.userId);
-                });
+                props.follow(props.userId);
               }}
             >
               follow

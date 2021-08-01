@@ -11,10 +11,9 @@ type PropsType = {
 export default function ProfileLink(props: PropsType) {
   return (
     <div className="profile-link">
-      <Link to={'/login'} className="profile-link__conteiner">
+      <Link to={props.isAuth ? '/profile' : '/login'} className="profile-link__conteiner">
         <div className="profile-link__login">{props.isAuth ? props.login : 'Login'}</div>
-
-        <img src={image} alt="avatar" className={'profile-link__avatar'} />
+        {props.isAuth ? <img src={image} alt="avatar" className={'profile-link__avatar'} /> : ''}
       </Link>
     </div>
   );

@@ -19,6 +19,7 @@
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "redux-thunk": "^2.3.0",
     "redux-ts": "^4.3.0",
     "sass": "^1.3.0",
     "typescript": "^4.3.2",

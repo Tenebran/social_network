@@ -7,11 +7,10 @@ import './Header.scss';
 type PropsType = {
   isAuth?: boolean;
   login?: string | null;
-  setUserData: (id: number, email: string, login: string) => void;
+  getUserData: () => void;
 };
 
 export default function Header(props: PropsType) {
-  console.log(props);
   return (
     <header className="social__header">
       <div className="content__conteiner">

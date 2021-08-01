@@ -24,4 +24,8 @@ export const API = {
   getMyProfile(userId: string) {
     return istance.get(`/profile/${userId}`).then(response => response.data);
   },
+
+  getMyLogin() {
+    return istance.get(`auth/me`).then(response => response.data);
+  },
 };

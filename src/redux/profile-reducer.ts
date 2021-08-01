@@ -1,6 +1,9 @@
 import { v1 } from 'uuid';
 import { ActionTypes } from './store/store';
 import { userImage } from './userImage';
+import { Dispatch } from 'redux';
+import { API } from '../modules/api/api';
+
 const ADD_POST = 'ADD-POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
@@ -145,3 +148,17 @@ export const setUsersProfile = (profileInfo: ProfileData) =>
   ({ type: SET_USER_PROFILE, profileInfo } as const);
 export const setIsFetching = (isFetching: boolean) =>
   ({ type: TOGGLE_IS_FETCHING, isFetching } as const);
+
+export const getMyProfile = (userID: string) => {
+  return (dispatch: Dispatch) => {
+    let userId = userID;
+    if (!userId) {
+      userId = '18258';
+    }
+    dispatch(setIsFetching(true));
+    API.getMyProfile(userId).then(data => {
+      dispatch(setUsersProfile(data));
+      dispatch(setIsFetching(false));
+    });
+  };
+};

@@ -1,22 +1,21 @@
 import React from 'react';
 import Profile from '../Profile';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import { AppStateType } from '../../../../redux/store/store';
-import { ProfileData, setUsersProfile, setIsFetching } from '../../../../redux/profile-reducer';
+import { ProfileData, getMyProfile } from '../../../../redux/profile-reducer';
 import Loader from '../../../iconComponents/Loader/Loader';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
-import { API } from '../../../api/api';
+import { Redirect, RouteComponentProps, withRouter } from 'react-router-dom';
 
 type OwnPropsType = {
-  setUsersProfile: (profileInfo: ProfileData) => void;
-  setIsFetching: (fetching: boolean) => void;
   isFetching: boolean;
+  getMyProfile: (userID: string) => void;
+  isAuth: boolean;
 };
 
 type MapStateToPropsType = {
   profileInfo: ProfileData;
   isFetching: boolean;
+  isAuth: boolean;
 };
 
 type PathParamsType = {
@@ -27,17 +26,10 @@ type PropsType = RouteComponentProps<PathParamsType> & OwnPropsType;
 
 class ProfileContainer extends React.Component<PropsType> {
   componentDidMount() {
-    let userId = this.props.match.params.userId;
-    if (!userId) {
-      userId = '18258';
-    }
-    this.props.setIsFetching(true);
-    API.getMyProfile(userId).then(data => {
-      this.props.setUsersProfile(data);
-      this.props.setIsFetching(false);
-    });
+    this.props.getMyProfile(this.props.match.params.userId);
   }
   render() {
+    // if (!this.props.isAuth) return <Redirect to={'/login'}></Redirect>; // исправиить
     return this.props.isFetching ? <Loader /> : <Profile {...this.props} />;
   }
 }
@@ -45,10 +37,9 @@ class ProfileContainer extends React.Component<PropsType> {
 let mapStateToProps = (state: AppStateType): MapStateToPropsType => ({
   profileInfo: state.profile.profileInfo,
   isFetching: state.profile.isFetching,
+  isAuth: state.auth.isAuth,
 });
 
 let withUrlDataContainerComponent = withRouter(ProfileContainer);
 
-export default connect(mapStateToProps, { setUsersProfile, setIsFetching })(
-  withUrlDataContainerComponent
-);
+export default connect(mapStateToProps, { getMyProfile })(withUrlDataContainerComponent);

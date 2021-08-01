@@ -10008,6 +10008,11 @@
     "indent-string" "^4.0.0"
     "strip-indent" "^3.0.0"
 
+"redux-thunk@^2.3.0":
+  "integrity" "sha512-km6dclyFnmcvxhAcrQV2AkZmPQjzPDjgVlQtR0EQjxZPyJ0BnMf3in1ryuR8A2qU0HldVRfxYXbFSKlI3N7Slw=="
+  "resolved" "https://registry.npmjs.org/redux-thunk/-/redux-thunk-2.3.0.tgz"
+  "version" "2.3.0"
+
 "redux-ts@^4.3.0":
   "integrity" "sha512-NJhH86XeoiQZ9iCXIcuB+oP++AUc0u+4mEPNn+Ars4LPeD/ICz8dxs69gNY9SBHRUjrXjWsokbNg1ECx44Ag2Q=="
   "resolved" "https://registry.npmjs.org/redux-ts/-/redux-ts-4.3.0.tgz"

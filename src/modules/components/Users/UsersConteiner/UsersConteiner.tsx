@@ -1,56 +1,39 @@
 import React from 'react';
 import {
   initialStateType,
+  UsersType,
+  getUsers,
   follow,
   unFollow,
-  setUsers,
-  UsersDataType,
-  setCurrentPage,
-  setTotalUsersCount,
-  UsersType,
-  setIsFetching,
-  setIsFollowingInProgress,
 } from '../../../../redux/users-reducer';
 import { AppStateType } from '../../../../redux/store/store';
 import { connect } from 'react-redux';
 import Loader from '../../../iconComponents/Loader/Loader';
 import Users from '../Users';
-import { API } from '../../../api/api';
+import { Redirect } from 'react-router-dom';
 
 type PropsType = {
   users: UsersType;
   currentPage: number;
   totalUsersCount: number;
   pageSize: number;
-  follow: (userId: string) => void;
-  unFollow: (userID: string) => void;
-  setUsers: (users: Array<UsersDataType>) => void;
-  setCurrentPage: (page: number) => void;
-  setTotalUsersCount: (pageCount: number) => void;
   isFetching: boolean;
-  setIsFetching: (fetching: boolean) => void;
-  setIsFollowingInProgress: (fetching: boolean, userId: string) => void;
+  getUsers: (currentPage: number, pageSize: number) => void;
+  follow: (userId: string) => void;
+  unFollow: (userId: string) => void;
+  isAuth: boolean;
 };
 
 class UsersContainer extends React.Component<PropsType> {
   componentDidMount() {
-    this.props.setIsFetching(true);
-    API.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
-      this.props.setUsers(data.items);
-      this.props.setTotalUsersCount(data.totalCount);
-      this.props.setIsFetching(false);
-    });
+    this.props.getUsers(this.props.currentPage, this.props.pageSize);
   }
   onPageChanged = (page: number) => {
-    this.props.setIsFetching(true);
-    this.props.setCurrentPage(page);
-    API.getUsers(page, this.props.pageSize).then(data => {
-      this.props.setUsers(data.items);
-      this.props.setIsFetching(false);
-    });
+    this.props.getUsers(page, this.props.pageSize);
   };
 
   render() {
+    if (!this.props.isAuth) return <Redirect to={'/login'}></Redirect>; // испправить
     return (
       <>
         {this.props.isFetching ? (
@@ -64,7 +47,6 @@ class UsersContainer extends React.Component<PropsType> {
             follow={this.props.follow}
             unFollow={this.props.unFollow}
             onPageChanged={this.onPageChanged}
-            setIsFollowingInProgress={this.props.setIsFollowingInProgress}
           />
         )}
       </>
@@ -79,6 +61,7 @@ type MapStateToPropsType = {
   currentPage: number;
   isFetching: boolean;
   setIsFollowingInProgress: Array<string>;
+  isAuth: boolean;
 };
 
 let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
@@ -89,15 +72,12 @@ let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     currentPage: state.users.currentPage,
     isFetching: state.users.isFetching,
     setIsFollowingInProgress: state.users.followingInProgress,
+    isAuth: state.auth.isAuth,
   };
 };
 
 export default connect(mapStateToProps, {
+  getUsers,
   follow,
   unFollow,
-  setUsers,
-  setCurrentPage,
-  setTotalUsersCount,
-  setIsFetching,
-  setIsFollowingInProgress,
 })(UsersContainer);

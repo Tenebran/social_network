@@ -8,7 +8,7 @@ import noAvatar from '../../assest/image/no-avatar.png';
 
 type PropsType = {
   profileInfo?: ProfileData;
-  setUsersProfile: (profileInfo: ProfileData) => void;
+  getMyProfile: (userID: string) => void;
 };
 
 export default function Profile(props: PropsType) {
