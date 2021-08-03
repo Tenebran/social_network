@@ -30,7 +30,7 @@ export default function Dialogs(props: PropsType) {
     setError(null);
   };
 
-  // if (!props.isAuth) return <Redirect to="/login"></Redirect>; // исправить
+  if (!props.isAuth) return <Redirect to="/login"></Redirect>;
 
   return (
     <div className="dialogs">

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
 import { UsersType } from '../../../redux/users-reducer';
 import User from './User/User';
 import './Users.scss';

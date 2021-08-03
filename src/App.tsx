@@ -9,6 +9,7 @@ import UsersConteiner from './modules/components/Users/UsersConteiner/UsersConte
 import { Route, Switch, Redirect } from 'react-router-dom';
 import HeaderConteiner from './modules/components/Header/HeaderConteiner/HeaderConteiner';
 import Login from './modules/components/Login/Login';
+import PageNotFound from './modules/components/PageNotFound/PageNotFound';
 
 function App() {
   return (
@@ -24,8 +25,9 @@ function App() {
           <Route path="/music" component={() => <Music />}></Route>
           <Route path="/settings" component={() => <Settings />}></Route>
           <Route path="/login" component={() => <Login />}></Route>
-          <Route path="*" exact>
-            <Redirect to="/profile" />
+          <Route path="/page_not_found" exact component={() => <PageNotFound />}></Route>
+          <Route path="*">
+            <Redirect to="/page_not_found" />
           </Route>
         </Switch>
       </div>

@@ -29,7 +29,7 @@ class ProfileContainer extends React.Component<PropsType> {
     this.props.getMyProfile(this.props.match.params.userId);
   }
   render() {
-    // if (!this.props.isAuth) return <Redirect to={'/login'}></Redirect>; // исправиить
+    if (!this.props.isAuth) return <Redirect to={'/login'}></Redirect>;
     return this.props.isFetching ? <Loader /> : <Profile {...this.props} />;
   }
 }

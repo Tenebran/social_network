@@ -33,7 +33,7 @@ class UsersContainer extends React.Component<PropsType> {
   };
 
   render() {
-    if (!this.props.isAuth) return <Redirect to={'/login'}></Redirect>; // испправить
+    if (!this.props.isAuth) return <Redirect to={'/login'}></Redirect>;
     return (
       <>
         {this.props.isFetching ? (
