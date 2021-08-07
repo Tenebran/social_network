@@ -12,6 +12,9 @@
     display: flex;
     flex-wrap: wrap;
     font-size: 20px;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
 
     font-weight: 200;
     color: rgb(46, 46, 121);
@@ -34,4 +37,24 @@
       }
     }
   }
+}
+
+.MuiTouchRipple-root {
+  color: blue !important;
+}
+
+.MuiButtonBase-root {
+  color: rgb(81, 129, 184) !important;
+  font-weight: 600 !important;
+  font-size: 20px !important;
+}
+
+.Mui-selected {
+  color: #fff !important;
+}
+
+.MuiPaginationItem-page.Mui-selected {
+  background-color: rgb(81, 129, 184) !important;
+  color: #fff;
+  border-radius: 5px;
 }

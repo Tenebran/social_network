@@ -1,3 +1,5 @@
+import { makeStyles, Typography } from '@material-ui/core';
+import { Pagination } from '@material-ui/lab';
 import React from 'react';
 import { UsersType } from '../../../redux/users-reducer';
 import User from './User/User';
@@ -13,7 +15,7 @@ type PropsType = {
   onPageChanged: (page: number) => void;
 };
 
-export default function Users(props: PropsType) {
+const Users = React.memo((props: PropsType) => {
   let pagesCount = props.users.totalUsersCount / props.users.pageSize;
   let pageArray = [];
 
@@ -21,22 +23,23 @@ export default function Users(props: PropsType) {
     pageArray.push(i);
   }
 
+  const handleChange = (event: object, value: number) => {
+    props.onPageChanged(value);
+  };
+
+  console.log(props.currentPage);
+
   return (
     <div className="users">
-      <div className="users__selected">
-        {pageArray.map(page => {
-          return (
-            <span
-              onClick={() => props.onPageChanged(page)}
-              className={
-                props.currentPage === page ? 'users__selected_page' : 'users__selected_not'
-              }
-              key={page}
-            >
-              {page}
-            </span>
-          );
-        })}
+      <div className={`users__selected `}>
+        <Pagination
+          className={`users__number`}
+          count={pageArray.length}
+          onChange={handleChange}
+          page={props.currentPage}
+          defaultPage={5}
+          boundaryCount={5}
+        />
       </div>
 
       {props.users.usersData.map(user => {
@@ -53,6 +56,18 @@ export default function Users(props: PropsType) {
           />
         );
       })}
+      <div className={`users__selected `}>
+        <Pagination
+          className={`users__number`}
+          count={pageArray.length}
+          onChange={handleChange}
+          page={props.currentPage}
+          defaultPage={5}
+          boundaryCount={5}
+        />
+      </div>
     </div>
   );
-}
+});
+
+export default Users;

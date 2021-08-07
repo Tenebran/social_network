@@ -30,7 +30,7 @@ export type UsersType = {
 
 let initialState: UsersType = {
   usersData: [],
-  pageSize: 100,
+  pageSize: 30,
   totalUsersCount: 0,
   currentPage: 1,
   isFetching: false,
