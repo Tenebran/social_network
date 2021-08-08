@@ -1,0 +1,13 @@
+.profile {
+  &__label {
+    &-status {
+      display: flex;
+      font-size: 15px;
+      font-family: 'Roboto-Black';
+      font-weight: 400;
+      color: #757f8a;
+      transition: 1s;
+      margin: 11px 0 0 0;
+    }
+  }
+}

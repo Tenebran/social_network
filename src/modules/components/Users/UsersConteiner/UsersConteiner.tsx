@@ -73,14 +73,6 @@ let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
   };
 };
 
-// export default withAuthRedirect(
-//   connect(mapStateToProps, {
-//     getUsers,
-//     follow,
-//     unFollow,
-//   })(UsersContainer)
-// );
-
 export default compose<React.ComponentType>(
   connect(mapStateToProps, {
     getUsers,

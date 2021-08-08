@@ -1,8 +1,9 @@
 import React from 'react';
-
 import { ProfileData } from '../../../../redux/profile-reducer';
 import ProfileInfoContacts from './ProfileInfoContacts/ProfileInfoContacts';
 import './ProfileInfo.scss';
+import ProfileStatus from './ProfileStatus/ProfileStatus';
+import ProfileLokingForJob from './ProfileLokingForJob/ProfileLokingForJob';
 
 type PropsType = {
   profile: ProfileData | undefined;
@@ -15,24 +16,13 @@ export default function ProfileInfo(props: PropsType) {
       <div className="profile__person_wrapp">
         <span className="profile__person_name">{props.profile?.fullName}</span>
 
-        <div className="profile__label-status">
-          <div className="profile__label-name">Status:</div>
-          <span className="profile__label-more">
-            {props.profile?.aboutMe ? props.profile?.aboutMe : ''}
-          </span>
-        </div>
+        <ProfileStatus aboutMe={props.profile?.aboutMe} />
       </div>
-      <div className="profile__label">
-        <div className="profile__label-name">Contacts:</div>
 
-        <ProfileInfoContacts contacts={props.profile?.contacts} />
-      </div>
-      <div className="profile__label">
-        <span className="profile__label-name">Loking For A Job:</span>
-        <span className="profile__label-more">
-          {props.profile?.lookingForAJob ? props.profile.lookingForAJobDescription : 'No'}
-        </span>
-      </div>
+      <ProfileInfoContacts contacts={props.profile?.contacts} />
+
+      <ProfileLokingForJob lookingForAJobDescription={props.profile?.lookingForAJobDescription} />
+
       <div className="profile__friends">
         <img
           alt="friends_photo"

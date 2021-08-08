@@ -28,7 +28,9 @@ export default function User(props: PropsType) {
         </div>
 
         <div>
-          <div className="user__name">{props.userName}</div>
+          <NavLink to={`./profile/${props.userId}`} className="user__name">
+            {props.userName}
+          </NavLink>
 
           {props.userFollowed ? (
             <button
