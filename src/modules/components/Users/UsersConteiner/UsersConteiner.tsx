@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import Loader from '../../../iconComponents/Loader/Loader';
 import Users from '../Users';
 import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
+import { compose } from 'redux';
 
 type PropsType = {
   users: UsersType;
@@ -72,10 +73,19 @@ let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
   };
 };
 
-export default withAuthRedirect(
+// export default withAuthRedirect(
+//   connect(mapStateToProps, {
+//     getUsers,
+//     follow,
+//     unFollow,
+//   })(UsersContainer)
+// );
+
+export default compose<React.ComponentType>(
   connect(mapStateToProps, {
     getUsers,
     follow,
     unFollow,
-  })(UsersContainer)
-);
+  }),
+  withAuthRedirect
+)(UsersContainer);
