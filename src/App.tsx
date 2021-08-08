@@ -26,7 +26,6 @@ function App() {
           <Route path="/settings" component={() => <Settings />}></Route>
           <Route path="/login" component={() => <Login />}></Route>
           <Route path="/page_not_found" exact component={() => <PageNotFound />}></Route>
-          <Route path="/" component={() => <ProfileConteiner />}></Route>
           <Route path="*">
             <Redirect to="/page_not_found" />
           </Route>

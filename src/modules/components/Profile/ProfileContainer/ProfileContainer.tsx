@@ -4,18 +4,17 @@ import { connect } from 'react-redux';
 import { AppStateType } from '../../../../redux/store/store';
 import { ProfileData, getMyProfile } from '../../../../redux/profile-reducer';
 import Loader from '../../../iconComponents/Loader/Loader';
-import { Redirect, RouteComponentProps, withRouter } from 'react-router-dom';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
 
 type OwnPropsType = {
   isFetching: boolean;
   getMyProfile: (userID: string) => void;
-  isAuth: boolean;
 };
 
 type MapStateToPropsType = {
   profileInfo: ProfileData;
   isFetching: boolean;
-  isAuth: boolean;
 };
 
 type PathParamsType = {
@@ -29,7 +28,6 @@ class ProfileContainer extends React.Component<PropsType> {
     this.props.getMyProfile(this.props.match.params.userId);
   }
   render() {
-    if (!this.props.isAuth) return <Redirect to={'/login'}></Redirect>;
     return this.props.isFetching ? <Loader /> : <Profile {...this.props} />;
   }
 }
@@ -37,9 +35,10 @@ class ProfileContainer extends React.Component<PropsType> {
 let mapStateToProps = (state: AppStateType): MapStateToPropsType => ({
   profileInfo: state.profile.profileInfo,
   isFetching: state.profile.isFetching,
-  isAuth: state.auth.isAuth,
 });
 
 let withUrlDataContainerComponent = withRouter(ProfileContainer);
 
-export default connect(mapStateToProps, { getMyProfile })(withUrlDataContainerComponent);
+export default withAuthRedirect(
+  connect(mapStateToProps, { getMyProfile })(withUrlDataContainerComponent)
+);

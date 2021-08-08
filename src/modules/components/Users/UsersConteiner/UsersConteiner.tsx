@@ -10,7 +10,7 @@ import { AppStateType } from '../../../../redux/store/store';
 import { connect } from 'react-redux';
 import Loader from '../../../iconComponents/Loader/Loader';
 import Users from '../Users';
-import { Redirect } from 'react-router-dom';
+import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
 
 type PropsType = {
   users: UsersType;
@@ -21,7 +21,6 @@ type PropsType = {
   getUsers: (currentPage: number, pageSize: number) => void;
   follow: (userId: string) => void;
   unFollow: (userId: string) => void;
-  isAuth: boolean;
 };
 
 class UsersContainer extends React.Component<PropsType> {
@@ -33,7 +32,6 @@ class UsersContainer extends React.Component<PropsType> {
   };
 
   render() {
-    if (!this.props.isAuth) return <Redirect to={'/login'}></Redirect>;
     return (
       <>
         {this.props.isFetching ? (
@@ -61,7 +59,6 @@ type MapStateToPropsType = {
   currentPage: number;
   isFetching: boolean;
   setIsFollowingInProgress: Array<string>;
-  isAuth: boolean;
 };
 
 let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
@@ -72,12 +69,13 @@ let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     currentPage: state.users.currentPage,
     isFetching: state.users.isFetching,
     setIsFollowingInProgress: state.users.followingInProgress,
-    isAuth: state.auth.isAuth,
   };
 };
 
-export default connect(mapStateToProps, {
-  getUsers,
-  follow,
-  unFollow,
-})(UsersContainer);
+export default withAuthRedirect(
+  connect(mapStateToProps, {
+    getUsers,
+    follow,
+    unFollow,
+  })(UsersContainer)
+);

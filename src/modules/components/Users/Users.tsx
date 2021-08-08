@@ -1,4 +1,3 @@
-import { makeStyles, Typography } from '@material-ui/core';
 import { Pagination } from '@material-ui/lab';
 import React from 'react';
 import { UsersType } from '../../../redux/users-reducer';
@@ -26,8 +25,6 @@ const Users = React.memo((props: PropsType) => {
   const handleChange = (event: object, value: number) => {
     props.onPageChanged(value);
   };
-
-  console.log(props.currentPage);
 
   return (
     <div className="users">
