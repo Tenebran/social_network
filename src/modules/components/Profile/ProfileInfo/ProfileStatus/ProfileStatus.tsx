@@ -2,12 +2,15 @@ import React, { ChangeEvent, useState } from 'react';
 import './ProfileStatus.scss';
 
 type PropsType = {
+  status?: string;
+  updateStatus: (status: string) => void;
   aboutMe?: string | null;
 };
 
 const ProfileStatus = (props: PropsType) => {
   let [status, setStatus] = useState<boolean>(false);
-  let [title, setTitle] = useState<string>(props.aboutMe ? props.aboutMe : 'Set status');
+  let [title, setTitle] = useState<string>(props.status ? props.status : 'Set status');
+  console.log(props.status);
 
   const onEditMode = () => {
     if (title === 'Set status') {
@@ -20,6 +23,7 @@ const ProfileStatus = (props: PropsType) => {
       setTitle('Set status');
     }
     setStatus(false);
+    props.updateStatus(title);
   };
 
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {

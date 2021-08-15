@@ -2,11 +2,12 @@ import { v1 } from 'uuid';
 import { ActionTypes } from './store/store';
 import { userImage } from './userImage';
 import { Dispatch } from 'redux';
-import { API } from '../modules/api/api';
+import { API, profileAPI } from '../modules/api/api';
 
 const ADD_POST = 'ADD-POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
+const SET_STATUS = 'SET_STATUS';
 
 export type PostDataType = {
   id?: string;
@@ -16,24 +17,24 @@ export type PostDataType = {
 };
 
 export type ProfileData = {
-  aboutMe: string | null;
+  aboutMe: string;
   contacts: {
-    facebook: string | null;
-    website: string | null;
-    vk: string | null;
-    twitter: string | null;
-    instagram: string | null;
-    youtube: string | null;
-    github: string | null;
-    mainLink: string | null;
+    facebook: string;
+    website: string;
+    vk: string;
+    twitter: string;
+    instagram: string;
+    youtube: string;
+    github: string;
+    mainLink: string;
   };
   lookingForAJob: boolean;
-  lookingForAJobDescription: string | null;
-  fullName: string | null;
-  userId: number | null;
+  lookingForAJobDescription: string;
+  fullName: string;
+  userId: number;
   photos: {
-    small: string | null;
-    large: string | null;
+    small: string;
+    large: string;
   };
 };
 
@@ -41,6 +42,7 @@ export type ProfileType = {
   postData: Array<PostDataType>;
   profileInfo: ProfileData;
   isFetching: boolean;
+  status: string;
 };
 
 let initialState: ProfileType = {
@@ -84,27 +86,28 @@ let initialState: ProfileType = {
   ],
 
   profileInfo: {
-    aboutMe: null,
+    aboutMe: '',
     contacts: {
-      facebook: null,
-      website: null,
-      vk: null,
-      twitter: null,
-      instagram: null,
-      youtube: null,
-      github: null,
-      mainLink: null,
+      facebook: '',
+      website: '',
+      vk: '',
+      twitter: '',
+      instagram: '',
+      youtube: '',
+      github: '',
+      mainLink: '',
     },
     lookingForAJob: false,
-    lookingForAJobDescription: null,
-    fullName: null,
-    userId: null,
+    lookingForAJobDescription: '',
+    fullName: '',
+    userId: 0,
     photos: {
-      small: null,
-      large: null,
+      small: '',
+      large: '',
     },
   },
   isFetching: false,
+  status: '',
 };
 
 export type initialStateType = typeof initialState;
@@ -130,6 +133,9 @@ export const profileReducer = (
     }
     case 'TOGGLE_IS_FETCHING': {
       return { ...state, isFetching: action.isFetching };
+    }
+    case SET_STATUS: {
+      return { ...state, status: action.status };
     }
 
     default:
@@ -158,7 +164,32 @@ export const getMyProfile = (userID: string) => {
     dispatch(setIsFetching(true));
     API.getMyProfile(userId).then(data => {
       dispatch(setUsersProfile(data));
+    });
+  };
+};
+
+export const setStatus = (status: string) => ({ type: SET_STATUS, status: status } as const);
+
+export const getStatus = (userID: string) => {
+  return (dispatch: Dispatch) => {
+    let userId = userID;
+    if (!userId) {
+      userId = '18258';
+    }
+    dispatch(setIsFetching(true));
+    profileAPI.getStatus(userId).then(data => {
+      dispatch(setStatus(data));
       dispatch(setIsFetching(false));
+    });
+  };
+};
+
+export const updateStatus = (status: string) => {
+  return (dispatch: Dispatch) => {
+    profileAPI.updateStatus(status).then(response => {
+      if (response.data.resultCode === 0) {
+        dispatch(setStatus(status));
+      }
     });
   };
 };

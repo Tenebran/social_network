@@ -4,10 +4,13 @@ import ProfileInfoContacts from './ProfileInfoContacts/ProfileInfoContacts';
 import './ProfileInfo.scss';
 import ProfileStatus from './ProfileStatus/ProfileStatus';
 import ProfileLokingForJob from './ProfileLokingForJob/ProfileLokingForJob';
+import { preProcessFile } from 'typescript';
 
 type PropsType = {
   profile: ProfileData | undefined;
   noAvatar: string;
+  status?: string;
+  updateStatus: (status: string) => void;
 };
 
 export default function ProfileInfo(props: PropsType) {
@@ -16,7 +19,11 @@ export default function ProfileInfo(props: PropsType) {
       <div className="profile__person_wrapp">
         <span className="profile__person_name">{props.profile?.fullName}</span>
 
-        <ProfileStatus aboutMe={props.profile?.aboutMe} />
+        <ProfileStatus
+          status={props.status}
+          updateStatus={props.updateStatus}
+          aboutMe={props.profile?.aboutMe}
+        />
       </div>
 
       <ProfileInfoContacts contacts={props.profile?.contacts} />

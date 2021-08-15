@@ -1,5 +1,5 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { profileReducer, addPostAC, setUsersProfile } from '../profile-reducer';
+import { profileReducer, addPostAC, setUsersProfile, setStatus } from '../profile-reducer';
 import {
   dialogsReducer,
   addMessageAC,
@@ -64,7 +64,8 @@ export type ActionTypes =
   | ReturnType<typeof setIsFetching>
   | ReturnType<typeof setUsersProfile>
   | ReturnType<typeof setUserData>
-  | ReturnType<typeof setIsFollowingInProgress>;
+  | ReturnType<typeof setIsFollowingInProgress>
+  | ReturnType<typeof setStatus>;
 
 export type AppStateType = ReturnType<typeof reducers>;
 

@@ -22,10 +22,24 @@ export const API = {
   },
 
   getMyProfile(userId: string) {
-    return istance.get(`/profile/${userId}`).then(response => response.data);
+    console.warn('Obsolete method. Please profileAPI object.');
+    return profileAPI.getMyProfile(userId);
   },
 
   getMyLogin() {
     return istance.get(`auth/me`).then(response => response.data);
+  },
+};
+
+export const profileAPI = {
+  getMyProfile(userId: string) {
+    return istance.get(`/profile/${userId}`).then(response => response.data);
+  },
+
+  getStatus(userId: string) {
+    return istance.get(`profile/status/${userId}`).then(response => response.data);
+  },
+  updateStatus(status: string) {
+    return istance.put(`profile/status`, { status });
   },
 };

@@ -9,6 +9,8 @@ import noAvatar from '../../assest/image/no-avatar.png';
 type PropsType = {
   profileInfo?: ProfileData;
   getMyProfile: (userID: string) => void;
+  updateStatus: (status: string) => void;
+  status?: string;
 };
 
 export default function Profile(props: PropsType) {
@@ -18,7 +20,12 @@ export default function Profile(props: PropsType) {
         <ProfileAvatar image={props.profileInfo?.photos} noAvatar={noAvatar} />
       </div>
       <div className="profile__right">
-        <ProfileInfo profile={props.profileInfo} noAvatar={noAvatar} />
+        <ProfileInfo
+          profile={props.profileInfo}
+          noAvatar={noAvatar}
+          status={props.status}
+          updateStatus={props.updateStatus}
+        />
         <MypostsContainer />
       </div>
     </div>
