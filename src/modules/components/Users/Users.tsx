@@ -34,8 +34,8 @@ const Users = React.memo((props: PropsType) => {
           count={pageArray.length}
           onChange={handleChange}
           page={props.currentPage}
-          defaultPage={5}
-          boundaryCount={5}
+          defaultPage={1}
+          boundaryCount={1}
         />
       </div>
 
