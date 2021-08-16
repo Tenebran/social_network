@@ -1,0 +1,46 @@
+.login {
+  &__input {
+    width: 270px;
+    height: 35px;
+    margin: 0 0 15px;
+    padding: 6px 12px 8px;
+    border-radius: 3px;
+    border: 1px solid #dce1e6;
+    background-color: #fff;
+    font-size: 14px;
+    color: #000000;
+  }
+
+  &__button {
+    background-color: rgb(81, 129, 184);
+    color: rgb(255, 255, 255);
+    padding: 7px 16px 8px;
+    height: 35px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+    transition: 0.7s;
+    border: none;
+    right: 0;
+
+    &:hover {
+      background-color: rgb(77, 109, 146);
+    }
+    &_wrapper {
+      display: flex;
+      justify-content: space-between;
+    }
+    &__chekbox {
+      display: flex;
+      align-items: center;
+      line-height: 20px;
+      font-size: 14px;
+      color: #0000009a;
+      font-weight: 200;
+    }
+  }
+
+  &__checkbox {
+    margin: 0 10px 0 0;
+  }
+}
