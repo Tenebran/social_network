@@ -1,17 +1,37 @@
 import React from 'react';
+import { Field, InjectedFormProps } from 'redux-form';
 import './LoginForm.scss';
 
-export default function LoginForm() {
+export type FormDataType = {
+  login: string;
+  password: string;
+  rememberMe: boolean;
+};
+
+const LoginForm: React.FC<InjectedFormProps<FormDataType>> = props => {
   return (
-    <form>
-      <input placeholder="Email" className="login__input" />
-      <input placeholder="Password" className="login__input" />
+    <form onSubmit={props.handleSubmit}>
+      <Field placeholder="Email" className="login__input" component={'input'} name={'login'} />
+      <Field
+        placeholder="Password"
+        className="login__input"
+        component={'input'}
+        name={'password'}
+      />
       <div className="login__button_wrapper">
         <button className="login__button">Sing in</button>
         <div className="login__button__chekbox">
-          <input type="checkbox" className="login__checkbox" /> remember me
+          <Field
+            type="checkbox"
+            className="login__checkbox"
+            component={'input'}
+            name={'rememberMe'}
+          />
+          remember me
         </div>
       </div>
     </form>
   );
-}
+};
+
+export default LoginForm;

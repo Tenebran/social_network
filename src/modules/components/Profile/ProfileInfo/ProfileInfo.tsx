@@ -4,7 +4,6 @@ import ProfileInfoContacts from './ProfileInfoContacts/ProfileInfoContacts';
 import './ProfileInfo.scss';
 import ProfileStatus from './ProfileStatus/ProfileStatus';
 import ProfileLokingForJob from './ProfileLokingForJob/ProfileLokingForJob';
-import { preProcessFile } from 'typescript';
 
 type PropsType = {
   profile: ProfileData | undefined;

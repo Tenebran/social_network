@@ -1,13 +1,14 @@
 .login {
-  z-index: 101;
+  z-index: 99;
+  margin: 65px 0 0 0;
   width: 100%;
   border-radius: 5px;
   font-family: 'Roboto-Black';
   font-size: 16px;
   line-height: 25px;
-  padding: 15px;
+
   background-color: #e5e5e5;
-  height: 100vh;
+  height: 94vh;
   width: 100%;
   position: absolute;
   top: 0;
@@ -19,13 +20,13 @@
 
   &__wrapper {
     max-width: 1180px;
-    padding: 0 10px;
     margin: 0 auto;
     display: flex;
+    flex-wrap: wrap;
   }
 
   &__left {
-    width: 622px;
+    width: 800px;
     height: 216px;
     padding: 15px;
     background-color: #fff;
