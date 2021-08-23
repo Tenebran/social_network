@@ -27,6 +27,7 @@ export const API = {
   },
 
   getMyLogin() {
+    console.warn('Obsolete method. Please profileAPI object.');
     return istance.get(`auth/me`).then(response => response.data);
   },
 };
@@ -41,5 +42,19 @@ export const profileAPI = {
   },
   updateStatus(status: string) {
     return istance.put(`profile/status`, { status });
+  },
+};
+
+export const authAPI = {
+  getMyLogin() {
+    return istance.get(`auth/me`);
+  },
+
+  login(email: string, password: string, rememberMe: boolean = false) {
+    return istance.post(`auth/login`, { email, password, rememberMe });
+  },
+
+  logout() {
+    return istance.delete(`auth/login`);
   },
 };

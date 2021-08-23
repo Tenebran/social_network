@@ -1,0 +1,41 @@
+.formcontroll {
+  width: 270px;
+  height: 35px;
+  margin: 0 0 15px;
+  padding: 6px 12px 8px;
+  border-radius: 3px;
+  border: 2px solid rgb(202, 110, 110);
+  background-color: #fff;
+  font-size: 14px;
+  color: #000000;
+
+  &__warn {
+    display: block;
+    font-size: 14px;
+    padding: 0 0 10px 0;
+    color: rgb(202, 110, 110);
+  }
+}
+
+.formcontroll::-webkit-input-placeholder {
+  /* Chrome */
+  color: rgb(202, 110, 110);
+  font-weight: 500;
+}
+.formcontroll:-ms-input-placeholder {
+  /* IE 10+ */
+  color: rgb(202, 110, 110);
+  font-weight: 500;
+}
+.formcontroll::-moz-placeholder {
+  /* Firefox 19+ */
+  color: rgb(202, 110, 110);
+  font-weight: 500;
+  opacity: 1;
+}
+.formcontroll:-moz-placeholder {
+  /* Firefox 4 - 18 */
+  color: rgb(202, 110, 110);
+  font-weight: 500;
+  opacity: 1;
+}

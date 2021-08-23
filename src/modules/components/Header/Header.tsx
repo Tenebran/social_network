@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import HeaderLogo from '../../iconComponents/HeaderLogo';
 import ProfileLink from './ProfileLink/ProfileLink';
 import './Header.scss';
@@ -8,6 +8,7 @@ type PropsType = {
   isAuth?: boolean;
   login?: string | null;
   getUserData: () => void;
+  logout: () => void;
 };
 
 export default function Header(props: PropsType) {
@@ -18,7 +19,7 @@ export default function Header(props: PropsType) {
           <Link to="/profile" className="social__header_logo">
             <HeaderLogo />
           </Link>
-          <ProfileLink isAuth={props.isAuth} login={props.login} />
+          <ProfileLink isAuth={props.isAuth} login={props.login} logout={props.logout} />
         </div>
       </div>
     </header>

@@ -1,0 +1,65 @@
+.profile__person {
+  &_area {
+    padding: 10px;
+    border-radius: 10px;
+    min-height: 50px;
+    background-color: #fff;
+    margin-bottom: 20px;
+    font-family: 'Roboto-Black';
+    &-on {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.11);
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+    }
+  }
+
+  &_posts {
+    margin-top: 20px;
+  }
+
+  &_avatar {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+  }
+
+  &_areaOn {
+    padding: 10px;
+    width: 90%;
+    outline: none;
+    border: none;
+    resize: none;
+    height: 100px;
+  }
+
+  &_areaOff {
+    padding: 10px;
+    width: 90%;
+    min-height: 20px;
+    outline: none;
+    border: none;
+    resize: none;
+  }
+
+  &__avatar {
+    object-fit: cover;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+
+  &__button {
+    background-color: rgb(81, 129, 184);
+    color: rgb(255, 255, 255);
+    padding: 7px 16px 8px;
+    width: 70px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 12.5px;
+    border-radius: 5px;
+    transition: 0.7s;
+    border: none;
+    right: 0;
+    margin: 0 20px 0 0;
+  }
+}
