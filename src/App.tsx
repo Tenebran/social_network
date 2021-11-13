@@ -25,6 +25,9 @@ function App() {
           <Route path="/music" component={() => <Music />}></Route>
           <Route path="/settings" component={() => <Settings />}></Route>
           <Route path="/login" component={() => <Login />}></Route>
+          <Route path="/">
+            <Redirect to="/login" />
+          </Route>
           <Route path="/page_not_found" exact component={() => <PageNotFound />}></Route>
           <Route path="*">
             <Redirect to="/page_not_found" />
