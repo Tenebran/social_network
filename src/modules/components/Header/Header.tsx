@@ -7,7 +7,6 @@ import './Header.scss';
 type PropsType = {
   isAuth?: boolean;
   login?: string | null;
-  getUserData: () => void;
   logout: () => void;
 };
 

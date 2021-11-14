@@ -10,32 +10,60 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import HeaderConteiner from './modules/components/Header/HeaderConteiner/HeaderConteiner';
 import Login from './modules/components/Login/Login';
 import PageNotFound from './modules/components/PageNotFound/PageNotFound';
+import { Component } from 'react';
+import { AppStateType } from './redux/store/store';
+import { connect } from 'react-redux';
+import { initializeApp } from './redux/app-reducer';
+import Loader from './modules/iconComponents/Loader/Loader';
 
-function App() {
-  return (
-    <div className="social__wrapper">
-      <HeaderConteiner />
-      <div className="content__conteiner content__conteiner_menu">
-        <Siderbar />
-        <Switch>
-          <Route path="/profile/:userId?" component={() => <ProfileConteiner />}></Route>
-          <Route path="/dialogs" component={() => <DialogsContainer />}></Route>
-          <Route path="/users" component={() => <UsersConteiner />}></Route>
-          <Route path="/news" component={() => <News />}></Route>
-          <Route path="/music" component={() => <Music />}></Route>
-          <Route path="/settings" component={() => <Settings />}></Route>
-          <Route path="/login" component={() => <Login />}></Route>
-          <Route path="/">
-            <Redirect to="/login" />
-          </Route>
-          <Route path="/page_not_found" exact component={() => <PageNotFound />}></Route>
-          <Route path="*">
-            <Redirect to="/page_not_found" />
-          </Route>
-        </Switch>
+class App extends Component<PropsType> {
+  componentDidMount() {
+    this.props.initializeApp();
+  }
+
+  render() {
+    if (!this.props.initialized) {
+      return <Loader />;
+    }
+
+    return (
+      <div className="social__wrapper">
+        <HeaderConteiner />
+        <div className="content__conteiner content__conteiner_menu">
+          <Siderbar />
+          <Switch>
+            <Route path="/profile/:userId?" component={() => <ProfileConteiner />}></Route>
+            <Route path="/dialogs" component={() => <DialogsContainer />}></Route>
+            <Route path="/users" component={() => <UsersConteiner />}></Route>
+            <Route path="/news" component={() => <News />}></Route>
+            <Route path="/music" component={() => <Music />}></Route>
+            <Route path="/settings" component={() => <Settings />}></Route>
+            <Route path="/login" component={() => <Login />}></Route>
+            <Route exact path="/">
+              <Redirect to="/profile" />
+            </Route>
+            <Route path="/page_not_found" exact component={() => <PageNotFound />}></Route>
+            <Route path="*">
+              <Redirect to="/page_not_found" />
+            </Route>
+          </Switch>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
-export default App;
+type PropsType = {
+  initializeApp: () => void;
+  initialized: boolean;
+};
+
+type MapStateToPropsType = {
+  initialized: boolean;
+};
+
+const mapStateToProps = (state: AppStateType): MapStateToPropsType => ({
+  initialized: state.app.initialized,
+});
+
+export default connect(mapStateToProps, { initializeApp })(App);
