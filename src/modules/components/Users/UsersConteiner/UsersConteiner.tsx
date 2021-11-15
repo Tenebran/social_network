@@ -12,6 +12,14 @@ import Loader from '../../../iconComponents/Loader/Loader';
 import Users from '../Users';
 import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
 import { compose } from 'redux';
+import {
+  getCurrentPageSelector,
+  getFollowingInProgressSelector,
+  getIsFetchingSelector,
+  getPageSizeSelector,
+  getTotalUsersCountSelector,
+  getUsersSelector,
+} from '../../../../redux/users-selectors';
 
 type PropsType = {
   users: UsersType;
@@ -64,12 +72,12 @@ type MapStateToPropsType = {
 
 let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
   return {
-    users: state.users,
-    pageSize: state.users.pageSize,
-    totalUsersCount: state.users.totalUsersCount,
-    currentPage: state.users.currentPage,
-    isFetching: state.users.isFetching,
-    setIsFollowingInProgress: state.users.followingInProgress,
+    users: getUsersSelector(state),
+    pageSize: getPageSizeSelector(state),
+    totalUsersCount: getTotalUsersCountSelector(state),
+    currentPage: getCurrentPageSelector(state),
+    isFetching: getIsFetchingSelector(state),
+    setIsFollowingInProgress: getFollowingInProgressSelector(state),
   };
 };
 
