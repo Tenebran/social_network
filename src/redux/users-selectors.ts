@@ -1,3 +1,4 @@
+import { createSelector } from 'reselect';
 import { AppStateType } from './store/store';
 
 export const getUsersSelector = (state: AppStateType) => {
@@ -23,3 +24,7 @@ export const getIsFetchingSelector = (state: AppStateType) => {
 export const getFollowingInProgressSelector = (state: AppStateType) => {
   return state.users.followingInProgress;
 };
+
+export const getUsersSuperSelector = createSelector(getUsersSelector, users => {
+  return users.usersData.filter(u => true);
+});
