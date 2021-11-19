@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import HeaderLogo from '../../iconComponents/HeaderLogo';
 import ProfileLink from './ProfileLink/ProfileLink';
 import './Header.scss';
+import { headerLogo } from '../../assest/icons';
 
 type PropsType = {
   isAuth?: boolean;
@@ -16,7 +16,7 @@ const Header = React.memo((props: PropsType) => {
       <div className="content__conteiner">
         <div className="social__header__conteiner">
           <Link to="/profile" className="social__header_logo">
-            <HeaderLogo />
+            {headerLogo}
           </Link>
           <ProfileLink isAuth={props.isAuth} login={props.login} logout={props.logout} />
         </div>

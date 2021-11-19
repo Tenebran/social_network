@@ -20,6 +20,7 @@ import { authReducer, setUserData } from '../auth-reducer';
 import thunkMiddleware from 'redux-thunk';
 import { reducer as formReducer } from 'redux-form';
 import { appReducer, setInitializedSucess } from '../app-reducer';
+import { siderbarReducer } from '../siderbar-reducer';
 
 let reducers = combineReducers({
   profile: profileReducer,
@@ -28,6 +29,7 @@ let reducers = combineReducers({
   auth: authReducer,
   form: formReducer,
   app: appReducer,
+  siderbar: siderbarReducer,
 });
 
 let store = createStore(reducers, applyMiddleware(thunkMiddleware));
