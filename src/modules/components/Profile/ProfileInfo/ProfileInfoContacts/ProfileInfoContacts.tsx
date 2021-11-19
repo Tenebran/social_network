@@ -1,5 +1,7 @@
 import React from 'react';
+import { v1 } from 'uuid';
 import './ProfileInfoContacts.scss';
+import { ProfileInfoContactsLink } from './ProfileInfoContactsLink/ProfileInfoContactsLink';
 
 type contacts = {
   facebook: string | null;
@@ -31,108 +33,23 @@ const ProfileInfoContacts = React.memo((props: PropsType) => {
   const website = props.contacts?.website ? props.contacts?.website.replace('https://', '') : null;
   const youtube = props.contacts?.youtube ? props.contacts?.youtube.replace('https://', '') : null;
 
+  const linkList = [
+    { link: faceboock, name: 'Faceboock', key: v1() },
+    { link: github, name: 'Github', key: v1() },
+    { link: instagram, name: 'Instagram', key: v1() },
+    { link: mainLink, name: 'MainLink', key: v1() },
+    { link: vk, name: 'VK', key: v1() },
+    { link: website, name: 'Website', key: v1() },
+    { link: youtube, name: 'Youtube', key: v1() },
+  ];
+
   return (
     <div className="profile__label">
       <div className="profile__label-name">Contacts:</div>
       <div className="profile__label-more">
-        <div className="contacts__link">
-          {faceboock ? (
-            <a
-              className="profile__label-link"
-              href={`https://${faceboock}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Faceboock
-            </a>
-          ) : (
-            ''
-          )}
-        </div>
-        <div className="contacts__link">
-          {github ? (
-            <a
-              className="profile__label-link"
-              href={`https://${github}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Github
-            </a>
-          ) : (
-            ''
-          )}
-        </div>
-        <div className="contacts__link">
-          {instagram ? (
-            <a
-              className="profile__label-link"
-              href={`https://${instagram}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Instagram
-            </a>
-          ) : (
-            ''
-          )}
-        </div>
-        <div className="contacts__link">
-          {mainLink ? (
-            <a
-              className="profile__label-link"
-              href={`https://${mainLink}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              MainLink
-            </a>
-          ) : (
-            ''
-          )}
-        </div>
-        <div className="contacts__link">
-          {vk ? (
-            <a
-              className="profile__label-link"
-              href={`https://${vk}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              vk
-            </a>
-          ) : (
-            ''
-          )}
-        </div>
-        <div className="contacts__link">
-          {website ? (
-            <a
-              className="profile__label-link"
-              href={`https://${website}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Website
-            </a>
-          ) : (
-            ''
-          )}
-        </div>
-        <div className="contacts__link">
-          {youtube ? (
-            <a
-              className="profile__label-link"
-              href={`https://${youtube}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Youtube
-            </a>
-          ) : (
-            ''
-          )}
-        </div>
+        {linkList.map(list => (
+          <ProfileInfoContactsLink link={list.link} name={list.name} key={list.key} />
+        ))}
       </div>
     </div>
   );
