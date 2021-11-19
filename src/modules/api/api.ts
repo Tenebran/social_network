@@ -22,12 +22,10 @@ export const API = {
   },
 
   getMyProfile(userId: string) {
-    console.warn('Obsolete method. Please profileAPI object.');
     return profileAPI.getMyProfile(userId);
   },
 
   getMyLogin() {
-    console.warn('Obsolete method. Please profileAPI object.');
     return istance.get(`auth/me`).then(response => response.data);
   },
 };

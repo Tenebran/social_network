@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './ProfileLink.scss';
-import { Link } from 'react-router-dom';
 import image from '../../../assest/image/no-avatar.png';
 import ProfileLinkContextMenu from '../ProfileLinkContextMenu/ProfileLinkContextMenu';
 

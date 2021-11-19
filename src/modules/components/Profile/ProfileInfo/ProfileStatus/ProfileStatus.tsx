@@ -7,20 +7,21 @@ type PropsType = {
   aboutMe?: string | null;
 };
 
+const noStatus = 'Set status';
+
 const ProfileStatus = (props: PropsType) => {
   let [status, setStatus] = useState<boolean>(false);
-  let [title, setTitle] = useState<string>(props.status ? props.status : 'Set status');
-  console.log(props.status);
+  let [title, setTitle] = useState<string>(props.status ? props.status : noStatus);
 
   const onEditMode = () => {
-    if (title === 'Set status') {
+    if (title === noStatus) {
       setTitle('');
     }
     setStatus(true);
   };
   const offEditMode = () => {
     if (title === '') {
-      setTitle('Set status');
+      setTitle(noStatus);
     }
     setStatus(false);
     props.updateStatus(title);
