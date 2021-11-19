@@ -2,6 +2,7 @@ import './Myposts.scss';
 import Posts from '../Post/Posts';
 import { ProfileType } from '../../../../../redux/profile-reducer';
 import MyPostTextArea from '../MyPostTextArea/MyPostTextArea';
+import React from 'react';
 
 type PropsType = {
   profile: ProfileType;
@@ -9,7 +10,7 @@ type PropsType = {
   noAvatar: string;
 };
 
-export default function Myposts(props: PropsType) {
+const Myposts = React.memo((props: PropsType) => {
   return (
     <>
       <MyPostTextArea profile={props.profile} addPost={props.addPost} noAvatar={props.noAvatar} />
@@ -26,4 +27,6 @@ export default function Myposts(props: PropsType) {
       </div>
     </>
   );
-}
+});
+
+export default Myposts;

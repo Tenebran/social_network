@@ -13,7 +13,7 @@ type PropsType = {
   status?: string;
 };
 
-export default function Profile(props: PropsType) {
+const Profile = React.memo((props: PropsType) => {
   return (
     <div className="profile">
       <div className="profile__left">
@@ -30,4 +30,6 @@ export default function Profile(props: PropsType) {
       </div>
     </div>
   );
-}
+});
+
+export default Profile;

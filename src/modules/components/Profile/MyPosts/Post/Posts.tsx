@@ -9,7 +9,7 @@ type PropsType = {
   noAvatar: string;
 };
 
-export default function Posts(props: PropsType) {
+const Posts = React.memo((props: PropsType) => {
   return (
     <div className="profile__person_posts">
       <img
@@ -20,4 +20,6 @@ export default function Posts(props: PropsType) {
       {props.messages}, Like: {props.like}
     </div>
   );
-}
+});
+
+export default Posts;

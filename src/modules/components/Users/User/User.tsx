@@ -13,7 +13,7 @@ type PropsType = {
   followingInProgress: Array<string>;
 };
 
-export default function User(props: PropsType) {
+const User = React.memo((props: PropsType) => {
   return (
     <div className="user">
       <div className="user__wrapper">
@@ -65,4 +65,6 @@ export default function User(props: PropsType) {
       </div>
     </div>
   );
-}
+});
+
+export default User;

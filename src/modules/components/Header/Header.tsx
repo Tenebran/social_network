@@ -10,7 +10,7 @@ type PropsType = {
   logout: () => void;
 };
 
-export default function Header(props: PropsType) {
+const Header = React.memo((props: PropsType) => {
   return (
     <header className="social__header">
       <div className="content__conteiner">
@@ -23,4 +23,6 @@ export default function Header(props: PropsType) {
       </div>
     </header>
   );
-}
+});
+
+export default Header;

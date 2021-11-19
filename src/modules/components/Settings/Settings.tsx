@@ -1,6 +1,8 @@
 import React from 'react';
 import './Settings.scss';
 
-export default function Settings() {
+const Settings = React.memo(() => {
   return <div className="settings">Settings</div>;
-}
+});
+
+export default Settings;

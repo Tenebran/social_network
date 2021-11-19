@@ -8,7 +8,7 @@ type PropsType = {
   noAvatar: string;
 };
 
-const MyPostTextArea = (props: PropsType) => {
+const MyPostTextArea = React.memo((props: PropsType) => {
   const inputRef = useRef<HTMLTextAreaElement | null>(null);
   const [blur, setBlur] = useState(false);
   let [title, setTitle] = useState('');
@@ -93,6 +93,6 @@ const MyPostTextArea = (props: PropsType) => {
       </div>
     </div>
   );
-};
+});
 
 export default MyPostTextArea;

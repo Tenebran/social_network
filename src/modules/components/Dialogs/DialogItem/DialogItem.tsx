@@ -8,7 +8,7 @@ type PropsType = {
   image: string;
 };
 
-export default function DialogItem(props: PropsType) {
+const DialogItem = React.memo((props: PropsType) => {
   let myPath = '/dialogs/' + props.id;
 
   return (
@@ -17,4 +17,6 @@ export default function DialogItem(props: PropsType) {
       <span className="dialogs__contacts__name">{props.name}</span>
     </Link>
   );
-}
+});
+
+export default DialogItem;

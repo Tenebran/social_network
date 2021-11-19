@@ -8,7 +8,7 @@ import SettingsIcon from '../../iconComponents/SettingsIcon';
 import UsersIcon from '../../iconComponents/UsersIcon';
 import './Siderbar.scss';
 
-export default function Siderbar() {
+const Siderbar = React.memo(() => {
   return (
     <div className="social__sidebar">
       <nav className="social__sidebar_nav">
@@ -52,4 +52,6 @@ export default function Siderbar() {
       </nav>
     </div>
   );
-}
+});
+
+export default Siderbar;

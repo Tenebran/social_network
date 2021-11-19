@@ -4,7 +4,7 @@ type PropsType = {
   lookingForAJobDescription?: string | null;
 };
 
-const ProfileLokingForJob = (props: PropsType) => {
+const ProfileLokingForJob = React.memo((props: PropsType) => {
   return (
     <div className="profile__label">
       <span className="profile__label-name">Loking For A Job:</span>
@@ -13,6 +13,6 @@ const ProfileLokingForJob = (props: PropsType) => {
       </span>
     </div>
   );
-};
+});
 
 export default ProfileLokingForJob;

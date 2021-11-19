@@ -11,7 +11,7 @@ type PropsType = {
   noAvatar: string;
 };
 
-export default function ProfileAvatar(props: PropsType) {
+const ProfileAvatar = React.memo((props: PropsType) => {
   return (
     <div className="profile__photo">
       <img
@@ -21,4 +21,6 @@ export default function ProfileAvatar(props: PropsType) {
       ></img>
     </div>
   );
-}
+});
+
+export default ProfileAvatar;

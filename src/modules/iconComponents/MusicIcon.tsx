@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function MusicIcon() {
+const MusicIcon = React.memo(() => {
   return (
     <svg
       className="social__sidebar_svg"
@@ -24,4 +24,6 @@ export default function MusicIcon() {
       </g>
     </svg>
   );
-}
+});
+
+export default MusicIcon;

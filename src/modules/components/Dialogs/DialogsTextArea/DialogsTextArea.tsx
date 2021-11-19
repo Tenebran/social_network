@@ -10,7 +10,7 @@ type PropsType = {
   error: string | null;
 };
 
-export default function DialogsTextArea(props: PropsType) {
+const DialogsTextArea = React.memo((props: PropsType) => {
   const inputRef = useRef<HTMLTextAreaElement | null>(null);
   type NewType = KeyboardEvent<HTMLTextAreaElement>;
 
@@ -39,4 +39,6 @@ export default function DialogsTextArea(props: PropsType) {
       </button>
     </div>
   );
-}
+});
+
+export default DialogsTextArea;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function NewsIcon() {
+const NewsIcon = React.memo(() => {
   return (
     <svg
       className="social__sidebar_svg"
@@ -30,4 +30,6 @@ export default function NewsIcon() {
       </g>
     </svg>
   );
-}
+});
+
+export default NewsIcon;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function MessagesIcon() {
+const MessagesIcon = React.memo(() => {
   return (
     <svg
       className="social__sidebar_svg"
@@ -28,4 +28,6 @@ export default function MessagesIcon() {
       </g>
     </svg>
   );
-}
+});
+
+export default MessagesIcon;

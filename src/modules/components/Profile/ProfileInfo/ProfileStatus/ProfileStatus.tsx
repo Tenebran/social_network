@@ -9,7 +9,7 @@ type PropsType = {
 
 const noStatus = 'Set status';
 
-const ProfileStatus = (props: PropsType) => {
+const ProfileStatus = React.memo((props: PropsType) => {
   let [status, setStatus] = useState<boolean>(false);
   let [title, setTitle] = useState<string>(props.status ? props.status : noStatus);
 
@@ -55,6 +55,6 @@ const ProfileStatus = (props: PropsType) => {
       )}
     </div>
   );
-};
+});
 
 export default ProfileStatus;

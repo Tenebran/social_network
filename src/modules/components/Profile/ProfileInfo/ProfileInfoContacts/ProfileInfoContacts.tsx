@@ -16,7 +16,7 @@ type PropsType = {
   contacts: contacts | undefined;
 };
 
-export default function ProfileInfoContacts(props: PropsType) {
+const ProfileInfoContacts = React.memo((props: PropsType) => {
   const faceboock = props.contacts?.facebook
     ? props.contacts?.facebook.replace('https://', '')
     : null;
@@ -136,4 +136,6 @@ export default function ProfileInfoContacts(props: PropsType) {
       </div>
     </div>
   );
-}
+});
+
+export default ProfileInfoContacts;

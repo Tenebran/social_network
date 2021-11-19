@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function SettingsIcon() {
+const SettingsIcon = React.memo(() => {
   return (
     <svg
       className="social__sidebar_svg"
@@ -18,4 +18,6 @@ export default function SettingsIcon() {
       ></path>
     </svg>
   );
-}
+});
+
+export default SettingsIcon;
